@@ -26,3 +26,14 @@
    4. Improve UI.
    5. Add more features that will be on my Notion.
    6. Repeat 🔁 previous step.
+
+## Commits information
+
+- 🔰 **Initial commit** = :beginner:
+- **Updates:**
+  - 🚀 Big update = :rocket:
+  - 💥 Medium update = :boom:
+  - ⭐ Small update = :star:
+  - 🔨 Bug fix = :hammer:
+- **Extras:**
+  - 💻 Added new technology = :computer:
