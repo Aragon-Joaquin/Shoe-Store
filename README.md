@@ -37,3 +37,13 @@
   - 🔨 Bug fix = :hammer:
 - **Extras:**
   - 💻 Added new technology = :computer:
+
+## The architecture used:
+
+> **Domain:** Redux - Contexts - Models
+
+> **Use Cases (Business Logic):** Components - Utilities - Hooks - Styled_Components/Layouts
+
+> **Adapter:** Adapters - Interceptors
+
+> **External Services:** Services
