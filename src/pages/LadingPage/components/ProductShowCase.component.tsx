@@ -1,4 +1,4 @@
-import Route from '../../../Components/Route.component'
+import { Route } from '../../../Components'
 
 interface ShowCaseParams {
 	URL: string

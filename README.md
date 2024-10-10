@@ -40,10 +40,10 @@
 
 ## The architecture used:
 
-> **Domain:** Redux - Contexts - Models
+- **Domain:** Redux - Contexts - Models
 
-> **Use Cases (Business Logic):** Components - Utilities - Hooks - Styled_Components/Layouts
+- **Use Cases (Business Logic):** Components - Utilities - Hooks - Styled_Components/Layouts
 
-> **Adapter:** Adapters - Interceptors
+- **Adapter:** Adapters - Interceptors
 
-> **External Services:** Services
+- **External Services:** Services

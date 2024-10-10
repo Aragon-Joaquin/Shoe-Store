@@ -1,0 +1,85 @@
+{
+	"length": 4,
+	"data": [
+		{
+			"idProduct": 1,
+			"productTitle": "London 96",
+			"productType": "Running Shoes",
+			"productShortDescription": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum quas consequuntur, assumenda dolore sequi quisquam? Inventore excepturi impedit fuga quas accusantium voluptatum nemo a vitae!",
+			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
+			"productDetails": ["Waterproof", "It's for wednesdays walks", "Leather handMade"],
+			"productManufacturer": "Adidas",
+			"productSizes": [
+				{ "quantity": 2, "Size": 35 },
+				{ "quantity": 0, "Size": 45 },
+				{ "quantity": 10, "Size": 32 },
+				{ "quantity": 6, "Size": 37 }
+			],
+			"productColors": [
+				{ "colorName": "White", "hexColor": "#e6e7eb" },
+				{ "colorName": "Black", "hexColor": "#2a2a2c" }
+			],
+			"productPrice": 400,
+			"productTags": ["Comfy", "Running", "Best seller", "Training"],
+			"productImages": [
+				{ "colorName": "Black", "images": [] },
+				{ "colorName": "White", "images": [] }
+			]
+		},
+		{
+			"idProduct": 2,
+			"productTitle": "Cool Boots :)",
+			"productType": "Boots",
+			"productShortDescription": "",
+			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
+			"productDetails": ["100% Leather", "Fireproof resistant", "Can avoid dangers"],
+			"productManufacturer": "Nike",
+			"productSizes": [{ "quantity": 21, "Size": 38 }],
+			"productColors": [{ "colorName": "Neon Orange", "hexColor": "#f54d31" }],
+			"productPrice": 900,
+			"productTags": ["Elegant", "UnderGround", "Crazy"],
+			"productImages": [{ "colorName": "Neon Orange", "images": [] }]
+		},
+		{
+			"idProduct": 3,
+			"productTitle": "Empty product!",
+			"productType": "",
+			"productShortDescription": "",
+			"productLongDescription": "",
+			"productDetails": [],
+			"productManufacturer": "",
+			"productSizes": [],
+			"productColors": [],
+			"productPrice": 0,
+			"productTags": [],
+			"productImages": []
+		},
+		{
+			"idProduct": 4,
+			"productTitle": "Grand Sparkle Court",
+			"productType": "Heels",
+			"productShortDescription": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum quas consequuntur, assumenda dolore sequi quisquam? Inventore excepturi impedit fuga quas accusantium voluptatum nemo a vitae!",
+			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
+			"productDetails": ["Clean touch", "Classic Model", "Laces made by professionals"],
+			"productManufacturer": "Royal",
+			"productSizes": [
+				{ "quantity": 0, "Size": 32 },
+				{ "quantity": 0, "Size": 33 },
+				{ "quantity": 13, "Size": 34 },
+				{ "quantity": 17, "Size": 35 },
+				{ "quantity": 0, "Size": 36 },
+				{ "quantity": 1, "Size": 37 }
+			],
+			"productColors": [
+				{ "colorName": "Coral Violet", "hexColor": "#625a9a" },
+				{ "colorName": "Red", "hexColor": "#e32b2b" }
+			],
+			"productPrice": 1000,
+			"productTags": ["Elegant", "Best seller", "Practical"],
+			"productImages": [
+				{ "colorName": "Coral Violet", "images": [] },
+				{ "colorName": "Red", "images": [] }
+			]
+		}
+	]
+}
