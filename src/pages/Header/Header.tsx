@@ -9,6 +9,7 @@ export default function Header() {
 				<h3 className="text-2xl cursor-pointer font-bold flex gap-2 items-end ">
 					{APP_NAME}
 					<AppLogo />
+
 					{/* could be an image + add custom animations on hover*/}
 				</h3>
 

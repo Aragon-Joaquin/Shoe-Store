@@ -10,10 +10,10 @@
 			"productDetails": ["Waterproof", "It's for wednesdays walks", "Leather handMade"],
 			"productManufacturer": "Adidas",
 			"productSizes": [
-				{ "quantity": 2, "Size": 35 },
-				{ "quantity": 0, "Size": 45 },
-				{ "quantity": 10, "Size": 32 },
-				{ "quantity": 6, "Size": 37 }
+				{ "quantity": 2, "size": 35 },
+				{ "quantity": 0, "size": 45 },
+				{ "quantity": 10, "size": 32 },
+				{ "quantity": 6, "size": 37 }
 			],
 			"productColors": [
 				{ "colorName": "White", "hexColor": "#e6e7eb" },
@@ -34,7 +34,7 @@
 			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
 			"productDetails": ["100% Leather", "Fireproof resistant", "Can avoid dangers"],
 			"productManufacturer": "Nike",
-			"productSizes": [{ "quantity": 21, "Size": 38 }],
+			"productSizes": [{ "quantity": 21, "size": 38 }],
 			"productColors": [{ "colorName": "Neon Orange", "hexColor": "#f54d31" }],
 			"productPrice": 900,
 			"productTags": ["Elegant", "UnderGround", "Crazy"],
@@ -63,12 +63,12 @@
 			"productDetails": ["Clean touch", "Classic Model", "Laces made by professionals"],
 			"productManufacturer": "Royal",
 			"productSizes": [
-				{ "quantity": 0, "Size": 32 },
-				{ "quantity": 0, "Size": 33 },
-				{ "quantity": 13, "Size": 34 },
-				{ "quantity": 17, "Size": 35 },
-				{ "quantity": 0, "Size": 36 },
-				{ "quantity": 1, "Size": 37 }
+				{ "quantity": 0, "size": 32 },
+				{ "quantity": 0, "size": 33 },
+				{ "quantity": 13, "size": 34 },
+				{ "quantity": 17, "size": 35 },
+				{ "quantity": 0, "size": 36 },
+				{ "quantity": 1, "size": 37 }
 			],
 			"productColors": [
 				{ "colorName": "Coral Violet", "hexColor": "#625a9a" },

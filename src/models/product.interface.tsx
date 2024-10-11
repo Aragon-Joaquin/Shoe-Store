@@ -1,17 +1,20 @@
 import { productColors, productsImages, productSizes } from './productsModels/products.types'
 
-export interface productInformation {
+export interface API_RESPONSE {
 	idProduct: number
-	title: string
-	type: string
-	shortDescription: string | ''
-	longDescription: string
-	details: Array<string> | []
-	manufacturer: string
-	sizes: Array<productSizes>
-	colors: Array<productColors>
-	tags: Array<string> | []
-	images: Array<productsImages> | []
-	price: number
+	productTitle: string
+	productType: string
+	productShortDescription: string | ''
+	productLongDescription: string
+	productDetails: Array<string> | []
+	productManufacturer: string
+	productSizes: Array<productSizes>
+	productColors: Array<productColors>
+	productPrice: number
+	productTags: Array<string> | []
+	productImages: Array<productsImages> | []
+}
+
+export interface productInformation extends API_RESPONSE {
 	quantityInCart: number
 }

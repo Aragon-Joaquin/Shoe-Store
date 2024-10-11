@@ -37,6 +37,7 @@
   - 🔨 Bug fix = :hammer:
 - **Extras:**
   - 💻 Added new technology = :computer:
+  - 🌈 UI Update = :rainbow:
 
 ## The architecture used:
 
