@@ -1,32 +1,38 @@
 import { createContext, ReactElement, useReducer } from 'react'
-import { initialState, reducerActions, reducerActionsNames, stateReducer } from '../reducers'
+import {
+	initialState,
+	stateReducer,
+	type_ADD_CART,
+	type_CLEAR_CART,
+	type_DELETE_CART,
+	type_REMOVE_CART
+} from '../reducers'
+import { cartCreateContext } from './models/cartContext.interface'
 
-export const CartContext = createContext({})
-// createContext({} as cartCreateContext)
-//! do i really need type this?
+export const CartContext = createContext({} as cartCreateContext)
 
 function useProductReducer() {
 	const [{ productsInCart, totalPrice }, dispatch] = useReducer(stateReducer, initialState)
 
-	const addToCart = ({ type, payload }: Extract<reducerActions, { type: reducerActionsNames.ADD_TO_CART }>) =>
+	const addToCart = ({ type, payload }: type_ADD_CART) =>
 		dispatch({
 			type,
 			payload: { idProduct: payload.idProduct, quantity: payload?.quantity }
 		})
 
-	const removeFromCart = ({ type, payload }: Extract<reducerActions, { type: reducerActionsNames.REMOVE_FROM_CART }>) =>
+	const removeFromCart = ({ type, payload }: type_REMOVE_CART) =>
 		dispatch({
 			type,
 			payload: { idProduct: payload.idProduct }
 		})
 
-	const deleteFromCart = ({ type, payload }: Extract<reducerActions, { type: reducerActionsNames.DELETE_FROM_CART }>) =>
+	const deleteFromCart = ({ type, payload }: type_DELETE_CART) =>
 		dispatch({
 			type,
 			payload: { idProduct: payload.idProduct }
 		})
 
-	const clearFromCart = ({ type }: Extract<reducerActions, { type: reducerActionsNames.CLEAR_CART }>) =>
+	const clearFromCart = ({ type }: type_CLEAR_CART) =>
 		dispatch({
 			type,
 			payload: null

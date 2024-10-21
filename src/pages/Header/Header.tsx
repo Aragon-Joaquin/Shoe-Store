@@ -3,6 +3,7 @@ import { ClueSvg, UserOutlineSVG, AppLogo, Cart } from '../../assets/index'
 import { Button, Input, Route } from '../../Components'
 import { useContext, useState } from 'react'
 import { CartContext } from '../../context'
+import { reducerActionsNames } from '../../reducers'
 
 export default function Header() {
 	const [toggleCart, setToggleCart] = useState(false)
@@ -47,7 +48,15 @@ export default function Header() {
 				<li>
 					{productsInCart.map((product) => {
 						return (
-							<ol key={product.idProduct} onClick={() => removeFromCart(product.idProduct)}>
+							<ol
+								key={product.idProduct}
+								onClick={() =>
+									removeFromCart({
+										type: reducerActionsNames.REMOVE_FROM_CART,
+										payload: { idProduct: product.idProduct }
+									})
+								}
+							>
 								{product.title}
 							</ol>
 						)

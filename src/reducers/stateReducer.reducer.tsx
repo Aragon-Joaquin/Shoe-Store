@@ -1,4 +1,11 @@
-import { reducerActions, reducerActionsNames, reducerInitialState } from './models/reducer.interface'
+import {
+	reducerActions,
+	reducerActionsNames,
+	reducerInitialState,
+	type_ADD_CART,
+	type_DELETE_CART,
+	type_REMOVE_CART
+} from './models/reducer.interface'
 import { updatePrice } from './utils/updatePrice'
 
 const STATE_ACTIONS = {
@@ -8,7 +15,7 @@ const STATE_ACTIONS = {
 		payload
 	}: {
 		state: reducerInitialState
-		payload: Extract<reducerActions, { type: reducerActionsNames.ADD_TO_CART }>['payload']
+		payload: type_ADD_CART['payload']
 	}): reducerInitialState {
 		const { productsInCart } = state
 
@@ -29,7 +36,7 @@ const STATE_ACTIONS = {
 		payload
 	}: {
 		state: reducerInitialState
-		payload: Extract<reducerActions, { type: reducerActionsNames.REMOVE_FROM_CART }>['payload']
+		payload: type_REMOVE_CART['payload']
 	}): reducerInitialState {
 		const { productsInCart } = state
 
@@ -48,7 +55,7 @@ const STATE_ACTIONS = {
 		payload
 	}: {
 		state: reducerInitialState
-		payload: Extract<reducerActions, { type: reducerActionsNames.DELETE_FROM_CART }>['payload']
+		payload: type_DELETE_CART['payload']
 	}): reducerInitialState {
 		const { productsInCart } = state
 		const productRemove = productsInCart.filter((product) => product.idProduct !== payload.idProduct)
@@ -74,7 +81,4 @@ export function stateReducer(state: reducerInitialState | undefined, action: red
 	}
 	const finalState = STATE_ACTIONS[reducerActionsNames.CLEAR_CART]
 	return finalState()
-
-	//! this throws an error because Quantity es needed in ADD_MULTIPLE_TO_CART but not in the others types.
-	// i think i'll refactor this entirely to Switch-Case.
 }
