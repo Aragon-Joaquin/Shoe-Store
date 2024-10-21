@@ -1,7 +1,7 @@
-import { productInformation } from '../../models/product.interface'
+import { productAdapted } from '../../models/product.interface'
 
 export interface reducerInitialState {
-	productsInCart: Array<productInformation> | []
+	productsInCart: Array<productAdapted> | []
 	totalPrice: number
 }
 
@@ -10,13 +10,22 @@ export const initialState: reducerInitialState = {
 	totalPrice: 0
 }
 
-export enum reducerActionsNames {
+export const enum reducerActionsNames {
 	ADD_TO_CART = 'addCart',
-	REMOVE_FROM_CART = 'removeCart'
+	ADD_MULTIPLE_TO_CART = 'addMultipleCart',
+	REMOVE_FROM_CART = 'removeCart',
+	DELETE_FROM_CART = 'deleteFromCart',
+	CLEAR_CART = 'clearCart'
 }
 
-export type returnStateFuncion = { state: reducerInitialState; payload: productInformation }
+type basicActions =
+	| { type: reducerActionsNames.ADD_TO_CART; payload: { quantity?: number; idProduct: number } }
+	| { type: reducerActionsNames.REMOVE_FROM_CART; payload: { idProduct: number } }
+	| { type: reducerActionsNames.DELETE_FROM_CART; payload: { idProduct: number } }
 
-export type reducerActions =
-	| { type: reducerActionsNames.ADD_TO_CART; payload: productInformation }
-	| { type: reducerActionsNames.REMOVE_FROM_CART; payload: productInformation }
+export type reducerActions = { type: reducerActionsNames.CLEAR_CART; payload: null } | basicActions
+
+// add 1 or more to cart
+// remove 1 quantity of that product
+// delete product from cart
+// clear cart

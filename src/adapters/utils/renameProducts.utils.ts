@@ -8,11 +8,13 @@ export function renameProducts(product: productInformation) {
 		productShortDescription,
 		productLongDescription,
 		productDetails,
+		productManufacturer,
 		productSizes,
 		productColors,
 		productPrice,
 		productTags,
-		productImages
+		productImages,
+		quantityInCart
 	} = product
 
 	return {
@@ -22,10 +24,12 @@ export function renameProducts(product: productInformation) {
 		shortDesc: productShortDescription,
 		longDesc: productLongDescription,
 		details: productDetails,
+		manufacturer: productManufacturer,
 		sizes: productSizes,
 		colors: productColors,
 		price: productPrice,
 		tags: productTags,
-		images: productImages
+		images: productImages,
+		quantityInCart
 	}
 }

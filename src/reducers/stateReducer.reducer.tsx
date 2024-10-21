@@ -1,43 +1,79 @@
-import {
-	reducerActions,
-	reducerActionsNames,
-	reducerInitialState,
-	returnStateFuncion
-} from './models/reducer.interface'
+import { reducerActions, reducerActionsNames, reducerInitialState } from './models/reducer.interface'
 import { updatePrice } from './utils/updatePrice'
 
 const STATE_ACTIONS = {
-	[reducerActionsNames.ADD_TO_CART]: function ({ state, payload }: returnStateFuncion) {
+	//! add
+	[reducerActionsNames.ADD_TO_CART]: function ({
+		state,
+		payload
+	}: {
+		state: reducerInitialState
+		payload: Extract<reducerActions, { type: reducerActionsNames.ADD_TO_CART }>['payload']
+	}) {
 		const { productsInCart } = state
 
-		const productDuplicated = productsInCart.find((product) => product.idProduct === payload.idProduct)
-		if (!productDuplicated) return { ...state, payload }
+		const newProduct = productsInCart.find((product) => product.idProduct === payload.idProduct)
+		if (!newProduct) return { ...state }
 
-		const productIncrementState = productsInCart.map((product) => {
-			if (productDuplicated.idProduct !== product.idProduct) return product
-			return {
-				...product,
-				quantityInCart: product.quantityInCart + 1
-			}
-		})
-
+		const checkIfExistsQuantity = payload.quantity != undefined ? payload.quantity : 1
+		const newState = [{ ...newProduct, quantityInCart: checkIfExistsQuantity }]
 		return {
-			productsInCart: productIncrementState,
-			totalPrice: updatePrice(productIncrementState)
+			productsInCart: [...state.productsInCart, ...newState],
+			totalPrice: updatePrice([...state.productsInCart, ...newState]) //* this could be wrong
 		}
 	},
-	[reducerActionsNames.REMOVE_FROM_CART]: function ({ state, payload }: returnStateFuncion) {
+
+	//! remove one
+	[reducerActionsNames.REMOVE_FROM_CART]: function ({
+		state,
+		payload
+	}: {
+		state: reducerInitialState
+		payload: Extract<reducerActions, { type: reducerActionsNames.REMOVE_FROM_CART }>['payload']
+	}) {
+		const { productsInCart } = state
+
+		const deletedProduct = productsInCart.findIndex((product) => product.idProduct === payload.idProduct)
+		if (deletedProduct < 0) return
+
+		const calcNewState = [...productsInCart.slice(deletedProduct, deletedProduct)]
+		return {
+			productsInCart: calcNewState,
+			totalPrice: updatePrice(calcNewState)
+		}
+	},
+	//! delete
+	[reducerActionsNames.DELETE_FROM_CART]: function ({
+		state,
+		payload
+	}: {
+		state: reducerInitialState
+		payload: Extract<reducerActions, { type: reducerActionsNames.DELETE_FROM_CART }>['payload']
+	}) {
 		const { productsInCart } = state
 		const productRemove = productsInCart.filter((product) => product.idProduct !== payload.idProduct)
 		return {
 			productsInCart: productRemove,
 			totalPrice: updatePrice(productRemove)
 		}
+	},
+	[reducerActionsNames.CLEAR_CART]: function () {
+		const newArray: reducerInitialState[] = []
+		return {
+			productsInCart: newArray,
+			totalPrice: 0
+		}
 	}
 }
 
 export function stateReducer(state: reducerInitialState, action: reducerActions) {
-	const { type, payload } = action
-	const finalState = STATE_ACTIONS[type]
-	return finalState ? finalState({ state, payload }) : state
+	if (action?.payload) {
+		const finalState = STATE_ACTIONS[action.type]
+		return finalState ? finalState({ state, payload: action.payload }) : state
+	}
+	const finalState = STATE_ACTIONS[reducerActionsNames.CLEAR_CART]
+	finalState()
+
+	//! this throws an error because Quantity es needed in ADD_MULTIPLE_TO_CART but not in the others types.
+	// i think i'll refactor this entirely to Switch-Case.
 }

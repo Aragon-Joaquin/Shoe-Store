@@ -1,6 +1,6 @@
-import { productInformation } from '../../models/product.interface'
+import { productAdapted } from '../../models/product.interface'
 
-export function updatePrice(products: Array<productInformation>) {
+export function updatePrice(products: Array<productAdapted>) {
 	return products.reduce((accum, currentProduct) => {
 		return accum + currentProduct.price
 	}, 0)

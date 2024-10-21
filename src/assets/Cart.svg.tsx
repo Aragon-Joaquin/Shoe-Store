@@ -1,8 +1,9 @@
 import { SVGParams } from './models/interfacesSvg.models'
 
-export function Cart({ className = '' }: SVGParams) {
+export function Cart({ className = '', onClick = () => {} }: SVGParams) {
 	return (
 		<svg
+			onClick={onClick}
 			className={`hover:scale-125 transition-all ${className}`}
 			width="24"
 			height="24"

@@ -1,8 +1,12 @@
-import { APP_NAME } from '../../utils/constants'
+import { APP_NAME } from '../../utils'
 import { ClueSvg, UserOutlineSVG, AppLogo, Cart } from '../../assets/index'
 import { Button, Input, Route } from '../../Components'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../context'
 
 export default function Header() {
+	const [toggleCart, setToggleCart] = useState(false)
+	const { productsInCart, removeFromCart } = useContext(CartContext)
 	return (
 		<nav className="flex flex-row md:justify-around justify-between px-10 py-3 items-center bg-mainPalette-darkBrown2 rounded-b-lg">
 			<div className="flex flex-row gap-x-2 items-center">
@@ -32,8 +36,24 @@ export default function Header() {
 					</Button>
 				</form>
 				<UserOutlineSVG className="outline outline-2 outline-offset-2 rounded-full cursor-pointer w-7 h-auto" />
-				<Cart className="cursor-pointer w-7 h-auto" />
+				<Cart className="cursor-pointer w-7 h-auto" onClick={() => setToggleCart((prev) => !prev)} />
 			</div>
+
+			<section
+				className={`transition-all duration-200 absolute h-screen w-fit top-0 right-0 bg-black z-10 px-4 
+					${toggleCart ? 'translate-x-full' : 'translate-x-0'}`}
+			>
+				<Button onClick={() => setToggleCart(true)}>X</Button>
+				<li>
+					{productsInCart.map((product) => {
+						return (
+							<ol key={product.idProduct} onClick={() => removeFromCart(product.idProduct)}>
+								{product.title}
+							</ol>
+						)
+					})}
+				</li>
+			</section>
 		</nav>
 	)
 }
