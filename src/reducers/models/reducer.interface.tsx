@@ -19,7 +19,7 @@ export const enum reducerActionsNames {
 }
 
 type basicActions =
-	| { type: reducerActionsNames.ADD_TO_CART; payload: { quantity?: number; idProduct: number } }
+	| { type: reducerActionsNames.ADD_TO_CART; payload: { idProduct: number; quantity?: number } }
 	| { type: reducerActionsNames.REMOVE_FROM_CART; payload: { idProduct: number } }
 	| { type: reducerActionsNames.DELETE_FROM_CART; payload: { idProduct: number } }
 

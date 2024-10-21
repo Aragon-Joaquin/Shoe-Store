@@ -9,7 +9,7 @@ const STATE_ACTIONS = {
 	}: {
 		state: reducerInitialState
 		payload: Extract<reducerActions, { type: reducerActionsNames.ADD_TO_CART }>['payload']
-	}) {
+	}): reducerInitialState {
 		const { productsInCart } = state
 
 		const newProduct = productsInCart.find((product) => product.idProduct === payload.idProduct)
@@ -30,11 +30,11 @@ const STATE_ACTIONS = {
 	}: {
 		state: reducerInitialState
 		payload: Extract<reducerActions, { type: reducerActionsNames.REMOVE_FROM_CART }>['payload']
-	}) {
+	}): reducerInitialState {
 		const { productsInCart } = state
 
 		const deletedProduct = productsInCart.findIndex((product) => product.idProduct === payload.idProduct)
-		if (deletedProduct < 0) return
+		if (deletedProduct < 0) return { ...state }
 
 		const calcNewState = [...productsInCart.slice(deletedProduct, deletedProduct)]
 		return {
@@ -49,7 +49,7 @@ const STATE_ACTIONS = {
 	}: {
 		state: reducerInitialState
 		payload: Extract<reducerActions, { type: reducerActionsNames.DELETE_FROM_CART }>['payload']
-	}) {
+	}): reducerInitialState {
 		const { productsInCart } = state
 		const productRemove = productsInCart.filter((product) => product.idProduct !== payload.idProduct)
 		return {
@@ -57,8 +57,9 @@ const STATE_ACTIONS = {
 			totalPrice: updatePrice(productRemove)
 		}
 	},
-	[reducerActionsNames.CLEAR_CART]: function () {
-		const newArray: reducerInitialState[] = []
+	//! clear cart
+	[reducerActionsNames.CLEAR_CART]: function (): reducerInitialState {
+		const newArray: reducerInitialState['productsInCart'] = []
 		return {
 			productsInCart: newArray,
 			totalPrice: 0
@@ -66,13 +67,13 @@ const STATE_ACTIONS = {
 	}
 }
 
-export function stateReducer(state: reducerInitialState, action: reducerActions) {
-	if (action?.payload) {
+export function stateReducer(state: reducerInitialState | undefined, action: reducerActions) {
+	if (action?.payload && state?.productsInCart) {
 		const finalState = STATE_ACTIONS[action.type]
 		return finalState ? finalState({ state, payload: action.payload }) : state
 	}
 	const finalState = STATE_ACTIONS[reducerActionsNames.CLEAR_CART]
-	finalState()
+	return finalState()
 
 	//! this throws an error because Quantity es needed in ADD_MULTIPLE_TO_CART but not in the others types.
 	// i think i'll refactor this entirely to Switch-Case.
