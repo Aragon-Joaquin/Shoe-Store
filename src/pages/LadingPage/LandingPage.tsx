@@ -12,7 +12,7 @@ export default function LandingPage() {
 				</div>
 			</header>
 
-			<main>
+			<article>
 				<section className="flex flex-col justify-center items-center">
 					<Title>Lorem ipsum dolor sit.</Title>
 					<p className="bg-mainPalette-darkBrown1 max-w-[50%] text-center p-4 border-2 border-mainPalette-softBrown1">
@@ -33,7 +33,7 @@ export default function LandingPage() {
 
 					<div>{/* <ProductCarrousel />  */}</div>
 				</section>
-			</main>
+			</article>
 		</>
 	)
 }
