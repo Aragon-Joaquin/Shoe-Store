@@ -1,2 +1,2 @@
 export * from './stateReducer.reducer'
-export * from './models/reducer.interface'
+export * from './models/reducer.interface.ts'

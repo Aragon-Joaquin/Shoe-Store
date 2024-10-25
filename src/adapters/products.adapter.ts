@@ -1,4 +1,4 @@
-import { productAdapted, productInformation } from '../models/product.interface'
+import { productAdapted, productInformation } from '../models'
 import { renameProducts } from './utils/renameProducts.utils'
 
 export type ServerResponse = {

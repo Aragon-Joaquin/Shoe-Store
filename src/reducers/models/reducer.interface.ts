@@ -1,4 +1,4 @@
-import { productAdapted } from '../../models/product.interface'
+import { productAdapted } from '../../models'
 
 export interface reducerInitialState {
 	productsInCart: Array<productAdapted> | []

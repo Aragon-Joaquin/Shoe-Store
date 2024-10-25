@@ -1,4 +1,4 @@
-import { productAdapted } from '../../models/product.interface'
+import { productAdapted } from '../../models'
 import { type_ADD_CART, type_CLEAR_CART, type_DELETE_CART, type_REMOVE_CART } from '../../reducers'
 export interface cartCreateContext {
 	productsInCart: Array<productAdapted>

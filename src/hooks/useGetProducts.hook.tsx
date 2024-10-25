@@ -1,13 +1,16 @@
-import { useContext, useMemo } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import { getProducts } from '../utils'
 import { CartContext } from '../context'
+import { shapeOfQuery } from '../models'
 import { reducerActionsNames } from '../reducers'
 
 export function useGetProducts() {
 	const { productsInCart, totalPrice, addToCart, deleteFromCart, clearFromCart, removeFromCart } =
 		useContext(CartContext)
 
-	const productsFromAPI = useMemo(async () => await getProducts(), [])
+	const [apiQuery, setApiQuery] = useState({} as shapeOfQuery)
+
+	const productsFromAPI = useMemo(async () => await getProducts(apiQuery), [apiQuery])
 
 	const cartActions = {
 		//! can use useCallback
@@ -23,6 +26,7 @@ export function useGetProducts() {
 	return {
 		productsFromAPI,
 		productFromCart: { productsInCart, totalPrice },
-		cartActions
+		cartActions,
+		setApiQuery
 	}
 }

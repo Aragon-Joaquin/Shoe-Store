@@ -5,7 +5,7 @@ import {
 	type_ADD_CART,
 	type_DELETE_CART,
 	type_REMOVE_CART
-} from './models/reducer.interface'
+} from './models/reducer.interface.ts'
 import { updatePrice } from './utils/updatePrice'
 
 const STATE_ACTIONS = {
