@@ -1,9 +1,11 @@
-import Header from './pages/Header/Header.tsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import LandingPage from './pages/LadingPage/LandingPage.tsx'
-import Error404 from './pages/ErrorPage/ErrorPage.tsx'
-import Products from './pages/Products/Products.tsx'
 import { UseCartContext } from './context/cart.context.tsx'
+import { lazy } from 'react'
+import Header from './pages/Header/Header.tsx'
+
+const LandingPage = lazy(() => import('./pages/LadingPage/LandingPage.tsx'))
+const Error404 = lazy(() => import('./pages/ErrorPage/ErrorPage.tsx'))
+const Products = lazy(() => import('./pages/Products/Products.tsx'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(

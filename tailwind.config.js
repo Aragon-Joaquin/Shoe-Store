@@ -20,8 +20,9 @@ export default {
 					colorTerciary: '#332021'
 				},
 				mainPalette: {
-					darkBrown1: '#382626',
+					darkBrown1: '#382626', //! why did i think it was a good idea work with brown
 					darkBrown2: '#322222',
+					darkBrown3: '#170e00',
 					softBrown1: '#4b3b3b',
 					softBrown2: '#5f5151',
 					softWhite: '#ebe9e9'

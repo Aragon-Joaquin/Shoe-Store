@@ -15,7 +15,7 @@ export async function getProducts(apiQuery: shapeOfQuery): Promise<productAdapte
 	if (apiQuery?.limit == undefined) return API_ADAPTER(response)
 	const truncResults: ServerResponse = {
 		data: response.data.filter((product, index) => {
-			if (apiQuery?.limit != undefined) return apiQuery.limit <= index ? product : null
+			if (apiQuery?.limit != undefined) return apiQuery.limit > index ? product : null
 			// typescript doesn't understand that the LIMIT is already control above
 		}),
 		length: response.length

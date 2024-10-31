@@ -1,19 +1,27 @@
-import { useContext, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { getProducts } from '../utils'
 import { CartContext } from '../context'
-import { shapeOfQuery } from '../models'
+import { productAdapted, shapeOfQuery } from '../models'
 import { reducerActionsNames } from '../reducers'
 
-export function useGetProducts() {
+export function useGetProducts(apiQuery: shapeOfQuery) {
 	const { productsInCart, totalPrice, addToCart, deleteFromCart, clearFromCart, removeFromCart } =
 		useContext(CartContext)
 
-	const [apiQuery, setApiQuery] = useState({} as shapeOfQuery)
+	const [returnResponse, setReturnResponse] = useState([] as Array<productAdapted> | [])
 
 	const productsFromAPI = useMemo(async () => await getProducts(apiQuery), [apiQuery])
 
+	useEffect(() => {
+		async function waitToResponse() {
+			const responseData = await productsFromAPI
+			setReturnResponse(responseData)
+		}
+		waitToResponse()
+	}, [productsFromAPI])
+
 	const cartActions = {
-		//! can use useCallback
+		//! can use useCallback?
 		addCart: (idProduct: number, quantity?: number) =>
 			addToCart({ type: reducerActionsNames.ADD_TO_CART, payload: { idProduct, quantity } }),
 		removeCart: (idProduct: number) =>
@@ -22,11 +30,9 @@ export function useGetProducts() {
 			deleteFromCart({ type: reducerActionsNames.DELETE_FROM_CART, payload: { idProduct } }),
 		clearCart: () => clearFromCart({ type: reducerActionsNames.CLEAR_CART, payload: null })
 	}
-
 	return {
-		productsFromAPI,
+		returnResponse,
 		productFromCart: { productsInCart, totalPrice },
-		cartActions,
-		setApiQuery
+		cartActions
 	}
 }
