@@ -1,4 +1,3 @@
-import { APP_NAME } from '../../utils'
 import { ClueSvg, UserOutlineSVG, AppLogo, Cart } from '../../assets/index'
 import { Button, Input, Route } from '../../Components'
 import { useState } from 'react'
@@ -14,12 +13,7 @@ export default function Header() {
 	return (
 		<nav className="flex flex-row md:justify-around justify-between px-10 py-3 items-center bg-mainPalette-darkBrown2 rounded-b-lg overflow-hidden">
 			<div className="flex flex-row gap-x-2 items-center">
-				<h3 className="text-2xl cursor-pointer font-bold flex gap-2 items-end ">
-					{APP_NAME}
-					<AppLogo />
-
-					{/* could be an image + add custom animations on hover*/}
-				</h3>
+				<AppLogo />
 
 				<ol className="flex flex-row pl-5 gap-x-4">
 					{differentsRoutes.map((route) => {

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 export interface RouterParams {
 	children: ReactNode
-	anchorURL: string
+	anchorURL: `/${string}`
 	className?: string
 	typeOfStyling?: 'button' | 'anchor'
 	propFunc?: () => void

@@ -2,6 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { UseCartContext } from './context/cart.context.tsx'
 import { lazy } from 'react'
 import Header from './pages/Header/Header.tsx'
+import Footer from './pages/Footer/Footer.tsx'
 
 const LandingPage = lazy(() => import('./pages/LadingPage/LandingPage.tsx'))
 const Error404 = lazy(() => import('./pages/ErrorPage/ErrorPage.tsx'))
@@ -22,7 +23,7 @@ export default function MainApp() {
 			<UseCartContext>
 				<Header />
 				<RouterProvider router={router} />
-				{/* <Footer> */}
+				<Footer />
 			</UseCartContext>
 		</>
 	)

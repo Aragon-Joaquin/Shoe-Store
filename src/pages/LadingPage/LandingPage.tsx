@@ -6,6 +6,7 @@ import { APP_NAME, APP_SLOGAN } from '../../utils/constants'
 import portraitShoe from '@images/portraitShoe.webp'
 import ProductShowCase from './components/ProductShowCase.component.tsx'
 import ProductServices from './components/ProductServices.component.tsx'
+import ProductCarrousel from '../../Components/ProductCarrousel.component.tsx'
 
 export default function LandingPage() {
 	const { returnResponse } = useGetProducts({ limit: 2 })
@@ -47,11 +48,18 @@ export default function LandingPage() {
 								)
 							})
 						) : (
-							<h1 className="h-96 text-9xl font-extrabold text-red-600">need to fix this loading</h1>
+							<>
+								<ProductShowCase URL="" Title="" Description="" imageSrc="" isInverted={false} />
+								<ProductShowCase URL="" Title="" Description="" imageSrc="" isInverted={true} />
+							</>
 						)}
 					</div>
 
-					<ProductServices />
+					<span className="block mt-10 py-10 h-full w-full bg-[#2A2520]">
+						<ProductServices />
+						<ProductCarrousel apiQuery={{}} titleName="More" />
+						<ProductCarrousel apiQuery={{}} titleName="Featured" />
+					</span>
 				</section>
 			</article>
 		</>
