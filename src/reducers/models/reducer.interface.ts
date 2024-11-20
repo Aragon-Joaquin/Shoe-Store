@@ -2,12 +2,10 @@ import { productAdapted } from '../../models'
 
 export interface reducerInitialState {
 	productsInCart: Array<productAdapted> | []
-	totalPrice: number
 }
 
 export const initialState: reducerInitialState = {
 	productsInCart: [],
-	totalPrice: 0
 }
 
 export const enum reducerActionsNames {
@@ -18,7 +16,7 @@ export const enum reducerActionsNames {
 }
 
 type basicActions =
-	| { type: reducerActionsNames.ADD_TO_CART; payload: { idProduct: number; quantity?: number } }
+	| { type: reducerActionsNames.ADD_TO_CART; payload: { product: productAdapted; quantity: number } }
 	| { type: reducerActionsNames.REMOVE_FROM_CART; payload: { idProduct: number } }
 	| { type: reducerActionsNames.DELETE_FROM_CART; payload: { idProduct: number } }
 

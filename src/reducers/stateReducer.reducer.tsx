@@ -6,7 +6,6 @@ import {
 	type_DELETE_CART,
 	type_REMOVE_CART
 } from './models/reducer.interface.ts'
-import { updatePrice } from './utils/updatePrice'
 
 const STATE_ACTIONS = {
 	//! add
@@ -17,16 +16,34 @@ const STATE_ACTIONS = {
 		state: reducerInitialState
 		payload: type_ADD_CART['payload']
 	}): reducerInitialState {
-		const { productsInCart } = state
+		const { product, quantity } = payload
 
-		const newProduct = productsInCart.find((product) => product.idProduct === payload.idProduct)
-		if (!newProduct) return { ...state }
+		if (!product) return { ...state }
 
-		const checkIfExistsQuantity = payload.quantity != undefined ? payload.quantity : 1
-		const newState = [{ ...newProduct, quantityInCart: checkIfExistsQuantity }]
+		const checkIfDup: number = state.productsInCart.findIndex(
+			(inCartProduct) => inCartProduct.idProduct === product.idProduct
+		)
+
+		if (checkIfDup < 0)
+			return {
+				productsInCart: [
+					...state.productsInCart,
+					{ ...product, quantityInCart: quantity }
+				]
+			}
+
+		const newState = {
+			...product,
+			quantityInCart:
+				quantity + state.productsInCart.at(checkIfDup)?.quantityInCart!
+		}
+
 		return {
-			productsInCart: [...state.productsInCart, ...newState],
-			totalPrice: updatePrice([...state.productsInCart, ...newState]) //* this could be wrong
+			productsInCart: [
+				...state.productsInCart.slice(0, checkIfDup),
+				newState,
+				...state.productsInCart.slice(checkIfDup + 1)
+			]
 		}
 	},
 
@@ -40,13 +57,17 @@ const STATE_ACTIONS = {
 	}): reducerInitialState {
 		const { productsInCart } = state
 
-		const deletedProduct = productsInCart.findIndex((product) => product.idProduct === payload.idProduct)
+		const deletedProduct = productsInCart.findIndex(
+			(product) => product.idProduct === payload.idProduct
+		)
 		if (deletedProduct < 0) return { ...state }
 
-		const calcNewState = [...productsInCart.slice(deletedProduct, deletedProduct)]
+		const calcNewState = [
+			...state.productsInCart.slice(0, deletedProduct),
+			...state.productsInCart.slice(deletedProduct + 1)
+		]
 		return {
-			productsInCart: calcNewState,
-			totalPrice: updatePrice(calcNewState)
+			productsInCart: calcNewState
 		}
 	},
 	//! delete
@@ -58,26 +79,32 @@ const STATE_ACTIONS = {
 		payload: type_DELETE_CART['payload']
 	}): reducerInitialState {
 		const { productsInCart } = state
-		const productRemove = productsInCart.filter((product) => product.idProduct !== payload.idProduct)
+		const productRemove = productsInCart.filter(
+			(product) => product.idProduct !== payload.idProduct
+		)
 		return {
-			productsInCart: productRemove,
-			totalPrice: updatePrice(productRemove)
+			productsInCart: productRemove
 		}
 	},
 	//! clear cart
 	[reducerActionsNames.CLEAR_CART]: function (): reducerInitialState {
 		const newArray: reducerInitialState['productsInCart'] = []
 		return {
-			productsInCart: newArray,
-			totalPrice: 0
+			productsInCart: newArray
 		}
 	}
 }
 
-export function stateReducer(state: reducerInitialState | undefined, action: reducerActions) {
+export function stateReducer(
+	state: reducerInitialState | undefined,
+	action: reducerActions
+) {
 	if (action?.payload && state?.productsInCart) {
 		const finalState = STATE_ACTIONS[action.type]
-		return finalState ? finalState({ state, payload: action.payload }) : state
+		return finalState
+			? //@ts-ignore: this is more complex that its seems. //!Fix this
+			  finalState({ state, payload: action.payload })
+			: state
 	}
 	const finalState = STATE_ACTIONS[reducerActionsNames.CLEAR_CART]
 	return finalState()

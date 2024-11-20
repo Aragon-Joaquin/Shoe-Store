@@ -7,7 +7,11 @@
 			"productType": "Running Shoes",
 			"productShortDescription": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum quas consequuntur, assumenda dolore sequi quisquam? Inventore excepturi impedit fuga quas accusantium voluptatum nemo a vitae!",
 			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
-			"productDetails": ["Waterproof", "It's for wednesdays walks", "Leather handMade"],
+			"productDetails": [
+				"Waterproof",
+				"It's for wednesdays walks",
+				"Leather handMade"
+			],
 			"productManufacturer": "Adidas",
 			"productSizes": [
 				{ "quantity": 2, "size": 35 },
@@ -32,10 +36,16 @@
 			"productType": "Boots",
 			"productShortDescription": "",
 			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
-			"productDetails": ["100% Leather", "Fireproof resistant", "Can avoid dangers"],
+			"productDetails": [
+				"100% Leather",
+				"Fireproof resistant",
+				"Can avoid dangers"
+			],
 			"productManufacturer": "Nike",
 			"productSizes": [{ "quantity": 21, "size": 38 }],
-			"productColors": [{ "colorName": "Neon Orange", "hexColor": "#f54d31" }],
+			"productColors": [
+				{ "colorName": "Neon Orange", "hexColor": "#f54d31" }
+			],
 			"productPrice": 900,
 			"productTags": ["Elegant", "UnderGround", "Crazy"],
 			"productImages": [{ "colorName": "Neon Orange", "images": [] }]
@@ -60,7 +70,11 @@
 			"productType": "Heels",
 			"productShortDescription": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum quas consequuntur, assumenda dolore sequi quisquam? Inventore excepturi impedit fuga quas accusantium voluptatum nemo a vitae!",
 			"productLongDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium nemo voluptatum asperiores, repellat suscipit velit distinctio, molestias rerum qui, hic doloribus non vero? Ex nesciunt harum, provident, maxime autem voluptas magnam corporis dignissimos asperiores numquam quo qui sunt iusto obcaecati ut. Atque sapiente dolorum fugiat exercitationem aspernatur assumenda dignissimos hic.",
-			"productDetails": ["Clean touch", "Classic Model", "Laces made by professionals"],
+			"productDetails": [
+				"Clean touch",
+				"Classic Model",
+				"Laces made by professionals"
+			],
 			"productManufacturer": "Royal",
 			"productSizes": [
 				{ "quantity": 0, "size": 32 },
@@ -79,6 +93,120 @@
 			"productImages": [
 				{ "colorName": "Coral Violet", "images": [] },
 				{ "colorName": "Red", "images": [] }
+			]
+		},
+		{
+			"idProduct": 5,
+			"productTitle": "Everyday Comfort Tee",
+			"productType": "Blucher",
+			"productShortDescription": "Your go-to for everyday wear.",
+			"productLongDescription": "Soft, breathable cotton fabric and a relaxed fit make this tee a wardrobe staple.",
+			"productDetails": ["100% cotton", "Machine washable", "Crew neck"],
+			"productManufacturer": "H&M",
+			"productSizes": [
+				{ "quantity": 20, "size": 37 },
+				{ "quantity": 8, "size": 39 },
+				{ "quantity": 12, "size": 40 },
+				{ "quantity": 15, "size": 42 }
+			],
+			"productColors": [
+				{ "colorName": "White", "hexColor": "#ffffff" },
+				{ "colorName": "Black", "hexColor": "#000000" },
+				{ "colorName": "Gray", "hexColor": "#808080" }
+			],
+			"productPrice": 1999,
+			"productTags": ["Casual", "Cotton", "Basic"],
+			"productImages": [
+				{ "colorName": "White", "images": [] },
+				{ "colorName": "Black", "images": [] },
+				{ "colorName": "Gray", "images": [] }
+			]
+		},
+		{
+			"idProduct": 6,
+			"productTitle": "Air Max 90",
+			"productType": "Sneakers",
+			"productShortDescription": "Iconic style, maximum comfort.",
+			"productLongDescription": "The Air Max 90 combines classic style with innovative cushioning. Its sleek design and visible Air Max unit provide a comfortable and stylish ride.",
+			"productDetails": [
+				"Air Max cushioning",
+				"Rubber outsole",
+				"Textile upper"
+			],
+			"productManufacturer": "Nike",
+			"productSizes": [
+				{ "quantity": 10, "size": 37 },
+				{ "quantity": 8, "size": 38 },
+				{ "quantity": 12, "size": 39 },
+				{ "quantity": 5, "size": 40 }
+			],
+			"productColors": [
+				{ "colorName": "White/Black", "hexColor": "#ffffff/#00000" },
+				{ "colorName": "University Red", "hexColor": "#e50000" }
+			],
+			"productPrice": 120,
+			"productTags": "Sneakers, Athletic, Nike, Air Max",
+			"productImages": [
+				{ "colorName": "White/Black", "images": [""] },
+				{ "colorName": "University Red", "images": [""] }
+			]
+		},
+		{
+			"idProduct": 7,
+			"productTitle": "Old School Canvas Sneakers",
+			"productType": "Sneakers",
+			"productShortDescription": "Classic style, timeless appeal.",
+			"productLongDescription": "A simple, versatile sneaker that's perfect for everyday wear. The canvas upper and vulcanized rubber sole offer a comfortable and durable fit.",
+			"productDetails": [
+				"Canvas upper",
+				"Vulcanized rubber sole",
+				"Lace-up closure"
+			],
+			"productManufacturer": "Vans",
+			"productSizes": [
+				{ "quantity": 15, "size": 37 },
+				{ "quantity": 20, "size": 38 },
+				{ "quantity": 12, "size": 39 },
+				{ "quantity": 8, "size": 40 }
+			],
+			"productColors": [
+				{ "colorName": "Classic Black", "hexColor": "#000000" },
+				{ "colorName": "True White", "hexColor": "#ffffff" }
+			],
+			"productPrice": 500,
+			"productTags": "Sneakers, Casual, Vans, Canvas",
+			"productImages": [
+				{ "colorName": "Classic Black", "images": [""] },
+				{ "colorName": "True White", "images": [""] }
+			]
+		},
+		{
+			"idProduct": 8,
+			"productTitle": "Trailblazer Hiking Boots",
+			"productType": "Boots",
+			"productShortDescription": "Conquer any trail with confidence.",
+			"productLongDescription": "Built for rugged terrain, these hiking boots offer superior comfort, support, and durability. The waterproof leather upper and aggressive outsole provide excellent protection and traction.",
+			"productDetails": [
+				"Waterproof leather upper",
+				"Gore-Tex membrane",
+				"Vibram outsole"
+			],
+			"productManufacturer": "Merrell",
+			"productSizes": [
+				{ "quantity": 7, "size": 37 },
+				{ "quantity": 10, "size": 38 },
+				{ "quantity": 12, "size": 39 },
+				{ "quantity": 5, "size": 40 }
+			],
+			"productColors": [
+				{ "colorName": "Dark Earth", "hexColor": "#464646" },
+				{ "colorName": "Beluga", "hexColor": "#D3D3D3" }
+			],
+			"productPrice": 1800,
+			"productTags": "Hiking Boots, Outdoor, Waterproof, Merrell",
+			"productImages": [
+				{ "colorName": "Dark Earth", "images": [""] },
+				{ "colorName": "Beluga", "images": [""] }
 			]
 		}
 	]

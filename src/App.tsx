@@ -1,29 +1,50 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import { UseCartContext } from './context/cart.context.tsx'
+import {
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
+	RouterProvider
+} from 'react-router-dom'
 import { lazy } from 'react'
-import Header from './pages/Header/Header.tsx'
-import Footer from './pages/Footer/Footer.tsx'
+import { UseCartContext } from './context/cart.context.tsx'
+
+import Layout from './pages/Layout/Layout.tsx'
+import { ValidateProducts } from './Components/index.ts'
 
 const LandingPage = lazy(() => import('./pages/LadingPage/LandingPage.tsx'))
 const Error404 = lazy(() => import('./pages/ErrorPage/ErrorPage.tsx'))
-const Products = lazy(() => import('./pages/Products/Products.tsx'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route errorElement={<Error404 />}>
-			<Route path="/" element={<LandingPage />} />
-			<Route path="/products" element={<Products />} />
+		<Route path='/' element={<Layout />}>
+			<Route index path='/' element={<LandingPage />} />
+			<Route path='/products' element={<ValidateProducts />} />
+			<Route
+				path='/products/:productsPage'
+				element={<ValidateProducts />}
+			/>
+			<Route path='*' element={<Error404 />} />
 		</Route>
-	) //add LazyLoading (documentation)
+	),
+	{
+		future: {
+			v7_normalizeFormMethod: true,
+			v7_partialHydration: true,
+			v7_fetcherPersist: true,
+			v7_relativeSplatPath: true,
+			v7_skipActionErrorRevalidation: true
+		}
+	}
 )
+//add LazyLoading (documentation)
 
 export default function MainApp() {
 	return (
 		<>
 			<UseCartContext>
-				<Header />
-				<RouterProvider router={router} />
-				<Footer />
+				<RouterProvider
+					router={router}
+					future={{ v7_startTransition: true }}
+				/>
 			</UseCartContext>
 		</>
 	)

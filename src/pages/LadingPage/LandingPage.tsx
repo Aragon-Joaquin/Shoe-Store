@@ -13,33 +13,34 @@ export default function LandingPage() {
 
 	return (
 		<>
-			<header className="relative cc_clip-path-polygon flex flex-col items-center justify-center bg-cover bg-center bg-ladingPageCover h-80 select-none">
-				<div className="mb-5 gap-y-3 p-4 flex flex-col items-center after:rounded-xl after:backdrop-blur-md after:bg-gray-700/30 after:w-full after:h-full after:-z-10 after:inset-0 after:absolute">
-					<h2 className="font-bold text-3xl">{APP_NAME}</h2>
-					<span className="text-center">{APP_SLOGAN}</span>
-					<Route anchorURL="/products" typeOfStyling="button">
+			<header className='relative cc_clip-path-polygon flex flex-col items-center justify-center bg-cover bg-center bg-ladingPageCover h-80 select-none'>
+				<div className='mb-5 gap-y-3 p-4 flex flex-col items-center after:rounded-xl after:backdrop-blur-md after:bg-gray-700/30 after:w-full after:h-full after:-z-10 after:inset-0 after:absolute'>
+					<h2 className='font-bold text-3xl'>{APP_NAME}</h2>
+					<span className='text-center'>{APP_SLOGAN}</span>
+					<Route anchorURL='/products' typeOfStyling='button'>
 						Check them out!
 					</Route>
 				</div>
 			</header>
 
 			<article>
-				<section className="flex flex-col justify-center items-center">
+				<section className='flex flex-col justify-center items-center'>
 					<Title>Lorem ipsum dolor sit.</Title>
-					<p className="bg-mainPalette-darkBrown1 max-w-[50%] text-center p-4 border-2 border-mainPalette-softBrown1 mb-2 rounded-md">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, modi! Blanditiis pariatur corporis incidunt
+					<p className='bg-mainPalette-darkBrown1 max-w-[50%] text-center p-4 border-2 border-mainPalette-softBrown1 mb-2 rounded-md'>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Velit, modi! Blanditiis pariatur corporis incidunt
 						officia eius placeat culpa voluptate dolore.
 					</p>
 				</section>
 
 				<section>
-					<div className="flex flex-col gap-10">
+					<div className='flex flex-col gap-10'>
 						{returnResponse?.length >= 1 ? (
 							returnResponse.map((product, idx) => {
 								return (
 									<ProductShowCase
 										key={product.idProduct}
-										URL={`/products/${product.title}`}
+										URL={`products/${product.title}`}
 										Title={product.title}
 										Description={product.longDesc}
 										imageSrc={portraitShoe} //! this is hard-coded
@@ -49,16 +50,28 @@ export default function LandingPage() {
 							})
 						) : (
 							<>
-								<ProductShowCase URL="" Title="" Description="" imageSrc="" isInverted={false} />
-								<ProductShowCase URL="" Title="" Description="" imageSrc="" isInverted={true} />
+								<ProductShowCase
+									URL=''
+									Title=''
+									Description=''
+									imageSrc=''
+									isInverted={false}
+								/>
+								<ProductShowCase
+									URL=''
+									Title=''
+									Description=''
+									imageSrc=''
+									isInverted={true}
+								/>
 							</>
 						)}
 					</div>
 
-					<span className="block mt-10 py-10 h-full w-full bg-[#2A2520]">
+					<span className='block mt-10 py-10 h-full w-full bg-[#2A2520]'>
 						<ProductServices />
-						<ProductCarrousel apiQuery={{}} titleName="More" />
-						<ProductCarrousel apiQuery={{}} titleName="Featured" />
+						<ProductCarrousel apiQuery={{}} titleName='More' />
+						<ProductCarrousel apiQuery={{}} titleName='Featured' />
 					</span>
 				</section>
 			</article>
