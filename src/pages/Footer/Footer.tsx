@@ -49,15 +49,12 @@ const SOCIALS: Array<singleContent> = [
 
 export default function Footer() {
 	return (
-		<footer className='bg-black/90 mt-10 py-10 border-t-2 border-t-slate-300/50'>
-			<div className='flex flex-row justify-around items-start'>
-				<AppLogo titleclassName='h-full vertical my-auto hover:scale-110 transition-all' />
-				<FooterMore
-					sectionName='Learn More'
-					contents={MORE_INFORMATION}
-				/>
-				<FooterMore sectionName='Contact Us' contents={CONTANCT_US} />
-				<FooterMore sectionName='Socials' contents={SOCIALS} />
+		<footer className="bg-black/90 mt-10 py-10 border-t-2 border-t-slate-300/50">
+			<div className="flex flex-row justify-around items-start">
+				<AppLogo titleclassName="h-full vertical my-auto hover:scale-110 transition-all" />
+				<FooterMore sectionName="Learn More" contents={MORE_INFORMATION} />
+				<FooterMore sectionName="Contact Us" contents={CONTANCT_US} />
+				<FooterMore sectionName="Socials" contents={SOCIALS} />
 			</div>
 
 			<span

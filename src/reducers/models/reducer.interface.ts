@@ -5,7 +5,7 @@ export interface reducerInitialState {
 }
 
 export const initialState: reducerInitialState = {
-	productsInCart: [],
+	productsInCart: []
 }
 
 export const enum reducerActionsNames {

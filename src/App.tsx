@@ -1,9 +1,4 @@
-import {
-	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
-	RouterProvider
-} from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import { lazy } from 'react'
 import { UseCartContext } from './context/cart.context.tsx'
 
@@ -15,14 +10,11 @@ const Error404 = lazy(() => import('./pages/ErrorPage/ErrorPage.tsx'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path='/' element={<Layout />}>
-			<Route index path='/' element={<LandingPage />} />
-			<Route path='/products' element={<ValidateProducts />} />
-			<Route
-				path='/products/:productsPage'
-				element={<ValidateProducts />}
-			/>
-			<Route path='*' element={<Error404 />} />
+		<Route path="/" element={<Layout />}>
+			<Route index path="/" element={<LandingPage />} />
+			<Route path="/products" element={<ValidateProducts />} />
+			<Route path="/products/:productsPage" element={<ValidateProducts />} />
+			<Route path="*" element={<Error404 />} />
 		</Route>
 	),
 	{
@@ -41,10 +33,7 @@ export default function MainApp() {
 	return (
 		<>
 			<UseCartContext>
-				<RouterProvider
-					router={router}
-					future={{ v7_startTransition: true }}
-				/>
+				<RouterProvider router={router} future={{ v7_startTransition: true }} />
 			</UseCartContext>
 		</>
 	)

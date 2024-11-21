@@ -12,10 +12,7 @@ import { cartCreateContext } from './models/cartContext.interface'
 export const CartContext = createContext({} as cartCreateContext)
 
 function useProductReducer() {
-	const [{ productsInCart }, dispatch] = useReducer(
-		stateReducer,
-		initialState
-	)
+	const [{ productsInCart }, dispatch] = useReducer(stateReducer, initialState)
 
 	const addToCart = ({ type, payload }: type_ADD_CART) =>
 		dispatch({
@@ -50,18 +47,8 @@ function useProductReducer() {
 	}
 }
 
-export function UseCartContext({
-	children
-}: {
-	children: Array<ReactElement> | ReactElement
-}) {
-	const {
-		productsInCart,
-		addToCart,
-		removeFromCart,
-		deleteFromCart,
-		clearFromCart
-	} = useProductReducer()
+export function UseCartContext({ children }: { children: Array<ReactElement> | ReactElement }) {
+	const { productsInCart, addToCart, removeFromCart, deleteFromCart, clearFromCart } = useProductReducer()
 	return (
 		<CartContext.Provider
 			value={{

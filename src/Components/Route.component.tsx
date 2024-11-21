@@ -9,17 +9,10 @@ export interface RouterParams {
 	propFunc?: () => void
 }
 
-export function Route({
-	children,
-	anchorURL,
-	className,
-	propFunc,
-	typeOfStyling = 'anchor'
-}: RouterParams) {
+export function Route({ children, anchorURL, className, propFunc, typeOfStyling = 'anchor' }: RouterParams) {
 	function preventReload(e: React.MouseEvent) {
 		if (propFunc) propFunc()
-		if (globalThis.window.location.pathname === anchorURL)
-			e.preventDefault()
+		if (globalThis.window.location.pathname === anchorURL) e.preventDefault()
 	}
 
 	const defaultStyle =
@@ -28,11 +21,7 @@ export function Route({
 			: 'relative border-2 p-2 rounded-md bg-customBrown-colorPrimary/20 border-customBrown-colorPrimary/70 text-mainPalette-softWhite hover:scale-110 transition-all duration-200'
 
 	return (
-		<Link
-			to={anchorURL}
-			className={`${defaultStyle} ${className}`}
-			onClick={preventReload}
-		>
+		<Link to={anchorURL} className={`${defaultStyle} ${className}`} onClick={preventReload}>
 			{children}
 		</Link>
 	)

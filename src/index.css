@@ -44,14 +44,7 @@
 
 	.cc_clip-path-polygon {
 		/* values: x% y% */
-		clip-path: polygon(
-			100% 0%,
-			100% 60%,
-			/*right side*/ 50% 90%,
-			50% 90%,
-			/*center side*/ 0 60%,
-			0 0
-		); /*left side*/
+		clip-path: polygon(100% 0%, 100% 60%, /*right side*/ 50% 90%, 50% 90%, /*center side*/ 0 60%, 0 0); /*left side*/
 	}
 }
 

@@ -15,7 +15,6 @@ dist-ssr
 *.env
 package-lock.json
 bun.lockb
-postcss.config.js
 
 # Editor directories and files
 .vscode/*

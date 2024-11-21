@@ -1,6 +1,5 @@
 export const APP_NAME: string = 'Shoe Store' as const
-export const APP_SLOGAN: string =
-	'Lorem ipsum dolor sit amet consectetur.' as const
+export const APP_SLOGAN: string = 'Lorem ipsum dolor sit amet consectetur.' as const
 
 export const formattToARS = new Intl.NumberFormat('es-AR', {
 	style: 'currency',

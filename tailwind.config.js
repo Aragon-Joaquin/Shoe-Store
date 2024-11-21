@@ -30,16 +30,13 @@ export default {
 			},
 
 			backgroundImage: {
-				ladingPageCover: `url(${shortUrlPathImages(
-					'landingPageCover.webp'
-				)})`
+				ladingPageCover: `url(${shortUrlPathImages('landingPageCover.webp')})`
 			},
 			gridTemplateColumns: {
 				'auto-fill-productCol': 'repeat(auto-fill, minmax(200px, 1fr))'
 			},
 			boxShadow: {
-				['inner-xl']:
-					'25px 0px 20px -20px rgba(0,0,0,0.5) inset, -25px 0px 20px -20px rgba(0,0,0,0.5) inset',
+				['inner-xl']: '25px 0px 20px -20px rgba(0,0,0,0.5) inset, -25px 0px 20px -20px rgba(0,0,0,0.5) inset',
 				['top']: 'rgba(0, 0, 0, 0.5) 0px -6px 6px -6px'
 			}
 		}

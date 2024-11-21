@@ -7,12 +7,7 @@ interface ButtonParams {
 	onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export function Button({
-	type = 'button',
-	children,
-	className = '',
-	onClick
-}: ButtonParams) {
+export function Button({ type = 'button', children, className = '', onClick }: ButtonParams) {
 	return (
 		<button
 			type={type || 'button'}

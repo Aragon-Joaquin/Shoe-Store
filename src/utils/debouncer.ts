@@ -1,8 +1,7 @@
-export function debouncer(customFn: Function, timeCicle = 500) {
+export function debouncer<T extends (...args: unknown[]) => void>(customFn: T, timeCicle = 500) {
 	let timeout: ReturnType<typeof setTimeout>
 
-	return (...args: Parameters<any>) => {
-		// i have no idea how to fix this
+	return (...args: Parameters<typeof customFn>) => {
 		clearTimeout(timeout)
 
 		timeout = setTimeout(() => {

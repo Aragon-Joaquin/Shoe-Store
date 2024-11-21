@@ -8,9 +8,5 @@ export function ValidateProducts() {
 
 	const parsedParam = Number.parseInt(productsPage!) //! returns NaN if it's undefined
 
-	return isNaN(parsedParam) ? (
-		<Navigate to='/products/1' replace />
-	) : (
-		<Products idPage={parsedParam} />
-	)
+	return isNaN(parsedParam) ? <Navigate to="/products/1" replace /> : <Products idPage={parsedParam} />
 }

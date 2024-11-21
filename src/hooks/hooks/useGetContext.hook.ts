@@ -5,19 +5,10 @@ import { productAdapted } from '../../models'
 import { updatePrice } from '../../reducers/utils/updatePrice'
 
 export function useGetContext() {
-	const {
-		productsInCart,
-		addToCart,
-		deleteFromCart,
-		clearFromCart,
-		removeFromCart
-	} = useContext(CartContext)
+	const { productsInCart, addToCart, deleteFromCart, clearFromCart, removeFromCart } = useContext(CartContext)
 
 	const [totalPrice, setTotalPrice] = useState<number>(0)
-	useEffect(
-		() => setTotalPrice(updatePrice(productsInCart)),
-		[productsInCart]
-	)
+	useEffect(() => setTotalPrice(updatePrice(productsInCart)), [productsInCart])
 
 	const cartActions = {
 		//! can use useCallback?

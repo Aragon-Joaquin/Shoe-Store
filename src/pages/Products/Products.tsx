@@ -18,22 +18,22 @@ export default function Products({ idPage }: { idPage: number }) {
 	const totalPrices = returnResponse.map((product) => product.price)
 
 	return (
-		<section className='mt-10 flex flex-col justify-center items-center'>
+		<section className="mt-10 flex flex-col justify-center items-center">
 			<Carrousel />
 
-			<Title className='mt-10 bg-mainPalette-darkBrown3 rounded-md px-4 border-2 border-mainPalette-softBrown1/50'>
+			<Title className="mt-10 bg-mainPalette-darkBrown3 rounded-md px-4 border-2 border-mainPalette-softBrown1/50">
 				{apiQuery?.searchBy?.filterName !== undefined
 					? `Searching by ${apiQuery.searchBy.filterName}`
 					: 'No filters applied.'}
 			</Title>
 
-			<article className='flex flex-row gap-x-4 w-full mt-6 h-full'>
+			<article className="flex flex-row gap-x-4 w-full mt-6 h-full">
 				<ProductsFilter totalPrices={totalPrices} />
-				<ul className='w-full grid grid-cols-auto-fill-productCol place-items-center gap-x-2 gap-y-4'>
+				<ul className="w-full grid grid-cols-auto-fill-productCol place-items-center gap-x-2 gap-y-4">
 					{returnResponse?.map((product) => {
 						return (
 							<li
-								className='w-[200px] bg-mainPalette-darkBrown3 border-2 border-mainPalette-softBrown2/40 p-4 flex flex-col justify-center rounded-sm'
+								className="w-[200px] bg-mainPalette-darkBrown3 border-2 border-mainPalette-softBrown2/40 p-4 flex flex-col justify-center rounded-sm"
 								key={product.idProduct}
 							>
 								<Link
@@ -44,26 +44,18 @@ export default function Products({ idPage }: { idPage: number }) {
 									<img
 										src={imageAsExample}
 										alt={`Image of ${product.title}`}
-										className='w-40 object-cover aspect-square transition-all hover:scale-110'
+										className="w-40 object-cover aspect-square transition-all hover:scale-110"
 									/>
 								</Link>
 
-								<div className='flex flex-col'>
-									<span className='font-bold text-xl cursor-default'>
-										{formattToARS.format(product.price)}
-									</span>
-									<p
-										className='mt-2 text-nowrap overflow-hidden text-ellipsis cursor-default'
-										title={product.title}
-									>
+								<div className="flex flex-col">
+									<span className="font-bold text-xl cursor-default">{formattToARS.format(product.price)}</span>
+									<p className="mt-2 text-nowrap overflow-hidden text-ellipsis cursor-default" title={product.title}>
 										{product.title}
 									</p>
 								</div>
 
-								<Button
-									onClick={() => addCart(product)}
-									className='mt-4'
-								>
+								<Button onClick={() => addCart(product)} className="mt-4">
 									Add to cart
 								</Button>
 							</li>
@@ -72,11 +64,11 @@ export default function Products({ idPage }: { idPage: number }) {
 				</ul>
 			</article>
 
-			<div className='w-full flex flex-row justify-center items-center gap-x-6 mt-10'>
-				<Arrow className='bg-transparent' />
-				<ul className='flex flex-row'>
+			<div className="w-full flex flex-row justify-center items-center gap-x-6 mt-10">
+				<Arrow className="bg-transparent" />
+				<ul className="flex flex-row">
 					{returnResponse?.map((_, idx) => {
-						let pageNumber = idx % PRODUCTS_PER_PAGE
+						const pageNumber = idx % PRODUCTS_PER_PAGE
 						if (pageNumber !== 0) return
 						return (
 							<li
@@ -84,14 +76,12 @@ export default function Products({ idPage }: { idPage: number }) {
 								className={`w-6 h-6 rounded-full bg-mainPalette-darkBrown1 border-2 border-mainPalette-softBrown1 cursor-pointer hover:scale-110
 									${idPage === pageNumber}
 									`}
-								onClick={() =>
-									globalThis.window.location.pathname
-								}
+								onClick={() => globalThis.window.location.pathname}
 							/>
 						)
 					})}
 				</ul>
-				<Arrow className='rotate-180 bg-transparent' />
+				<Arrow className="rotate-180 bg-transparent" />
 			</div>
 		</section>
 	)

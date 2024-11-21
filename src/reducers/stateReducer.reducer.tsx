@@ -26,16 +26,12 @@ const STATE_ACTIONS = {
 
 		if (checkIfDup < 0)
 			return {
-				productsInCart: [
-					...state.productsInCart,
-					{ ...product, quantityInCart: quantity }
-				]
+				productsInCart: [...state.productsInCart, { ...product, quantityInCart: quantity }]
 			}
 
 		const newState = {
 			...product,
-			quantityInCart:
-				quantity + state.productsInCart.at(checkIfDup)?.quantityInCart!
+			quantityInCart: quantity + (state.productsInCart.at(checkIfDup)?.quantityInCart || 0)
 		}
 
 		return {
@@ -57,9 +53,7 @@ const STATE_ACTIONS = {
 	}): reducerInitialState {
 		const { productsInCart } = state
 
-		const deletedProduct = productsInCart.findIndex(
-			(product) => product.idProduct === payload.idProduct
-		)
+		const deletedProduct = productsInCart.findIndex((product) => product.idProduct === payload.idProduct)
 		if (deletedProduct < 0) return { ...state }
 
 		const calcNewState = [
@@ -79,9 +73,7 @@ const STATE_ACTIONS = {
 		payload: type_DELETE_CART['payload']
 	}): reducerInitialState {
 		const { productsInCart } = state
-		const productRemove = productsInCart.filter(
-			(product) => product.idProduct !== payload.idProduct
-		)
+		const productRemove = productsInCart.filter((product) => product.idProduct !== payload.idProduct)
 		return {
 			productsInCart: productRemove
 		}
@@ -95,14 +87,11 @@ const STATE_ACTIONS = {
 	}
 }
 
-export function stateReducer(
-	state: reducerInitialState | undefined,
-	action: reducerActions
-) {
+export function stateReducer(state: reducerInitialState | undefined, action: reducerActions) {
 	if (action?.payload && state?.productsInCart) {
 		const finalState = STATE_ACTIONS[action.type]
 		return finalState
-			? //@ts-ignore: this is more complex that its seems. //!Fix this
+			? //@ts-expect-error: this is more complex that its seems. //!Fix this
 			  finalState({ state, payload: action.payload })
 			: state
 	}
