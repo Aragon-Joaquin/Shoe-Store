@@ -15,8 +15,12 @@ export default function Products({ idPage }: { idPage: number }) {
 		cartActions: { addCart }
 	} = useGetProducts({ limit: 8 }) //add offset based on productsPage
 
-	const totalPrices = returnResponse.map((product) => product.price)
-
+	const productsInformation = {
+		//todo: improve this
+		categories: returnResponse.map((el) => el?.tags),
+		colors: returnResponse.map((el) => el?.colors),
+		sizes: returnResponse.map((el) => el?.sizes)
+	}
 	return (
 		<section className="mt-10 flex flex-col justify-center items-center">
 			<Carrousel />
@@ -28,8 +32,8 @@ export default function Products({ idPage }: { idPage: number }) {
 			</Title>
 
 			<article className="flex flex-row gap-x-4 w-full mt-6 h-full">
-				<ProductsFilter totalPrices={totalPrices} />
-				<ul className="w-full grid grid-cols-auto-fill-productCol place-items-center gap-x-2 gap-y-4">
+				<ProductsFilter totalPrice={returnResponse.map((el) => el.price)} productsInformation={productsInformation} />
+				<ul className="w-full h-full grid grid-cols-auto-fill-productCol place-items-center items-start gap-x-2 gap-y-4">
 					{returnResponse?.map((product) => {
 						return (
 							<li

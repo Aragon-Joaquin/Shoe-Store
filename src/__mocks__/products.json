@@ -123,14 +123,16 @@
 				{ "quantity": 5, "size": 40 }
 			],
 			"productColors": [
-				{ "colorName": "White/Black", "hexColor": "#ffffff/#00000" },
+				{ "colorName": "White", "hexColor": "#ffffff" },
+				{ "colorName": "Black", "hexColor": "#000000" },
 				{ "colorName": "University Red", "hexColor": "#e50000" }
 			],
 			"productPrice": 120,
-			"productTags": "Sneakers, Athletic, Nike, Air Max",
+			"productTags": ["Sneakers", "Athletic", "Nike", "Air Max"],
 			"productImages": [
-				{ "colorName": "White/Black", "images": [""] },
-				{ "colorName": "University Red", "images": [""] }
+				{ "colorName": "White", "images": [] },
+				{ "colorName": "Black", "images": [] },
+				{ "colorName": "University Red", "images": [] }
 			]
 		},
 		{
@@ -152,10 +154,10 @@
 				{ "colorName": "True White", "hexColor": "#ffffff" }
 			],
 			"productPrice": 500,
-			"productTags": "Sneakers, Casual, Vans, Canvas",
+			"productTags": ["Sneakers", "Casual", "Vans", "Canvas"],
 			"productImages": [
-				{ "colorName": "Classic Black", "images": [""] },
-				{ "colorName": "True White", "images": [""] }
+				{ "colorName": "Classic Black", "images": [] },
+				{ "colorName": "True White", "images": [] }
 			]
 		},
 		{
@@ -177,10 +179,10 @@
 				{ "colorName": "Beluga", "hexColor": "#D3D3D3" }
 			],
 			"productPrice": 1800,
-			"productTags": "Hiking Boots, Outdoor, Waterproof, Merrell",
+			"productTags": ["Hiking Boots", "Outdoor", "Waterproof", "Merrell"],
 			"productImages": [
-				{ "colorName": "Dark Earth", "images": [""] },
-				{ "colorName": "Beluga", "images": [""] }
+				{ "colorName": "Dark Earth", "images": [] },
+				{ "colorName": "Beluga", "images": [] }
 			]
 		}
 	]

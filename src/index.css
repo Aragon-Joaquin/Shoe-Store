@@ -12,20 +12,15 @@
 		-webkit-appearance: none;
 		appearance: none;
 		pointer-events: none;
+		border-radius: 100%;
 
 		&::-moz-range-thumb {
-			-webkit-appearance: none;
-			appearance: none;
 			pointer-events: all;
 			cursor: pointer;
-			border-radius: 100%;
 		}
 		&::-webkit-slider-thumb {
-			-webkit-appearance: none;
-			appearance: none;
 			pointer-events: all;
 			cursor: pointer;
-			border-radius: 100%;
 		}
 	}
 
