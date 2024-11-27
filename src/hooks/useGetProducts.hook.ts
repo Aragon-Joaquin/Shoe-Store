@@ -21,14 +21,12 @@ export function useGetProducts(apiQuery: shapeOfQuery | null) {
 		waitToResponse()
 	}, [apiQuery])
 
-	useEffect(() => {}, [productsInCart])
-
 	return {
 		apiQuery,
 		returnResponse,
 		productFromCart: {
 			productsInCart,
-			totalPrice: totalPrice
+			totalPrice
 		},
 		cartActions
 	}

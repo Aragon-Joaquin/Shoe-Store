@@ -13,7 +13,7 @@ export default function Products({ idPage }: { idPage: number }) {
 		returnResponse,
 		apiQuery,
 		cartActions: { addCart }
-	} = useGetProducts({ limit: 8 }) //add offset based on productsPage
+	} = useGetProducts({ limit: 8 })
 
 	const productsInformation = {
 		//todo: improve this
