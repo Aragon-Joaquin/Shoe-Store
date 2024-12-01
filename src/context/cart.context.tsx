@@ -1,4 +1,4 @@
-import { createContext, ReactElement, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 import {
 	initialState,
 	stateReducer,
@@ -8,6 +8,7 @@ import {
 	type_REMOVE_CART
 } from '../reducers'
 import { cartCreateContext } from './models/cartContext.interface'
+import { contextProps } from './models/context.model'
 
 export const CartContext = createContext({} as cartCreateContext)
 
@@ -47,7 +48,7 @@ function useProductReducer() {
 	}
 }
 
-export function UseCartContext({ children }: { children: Array<ReactElement> | ReactElement }) {
+export function UseCartContext({ children }: contextProps) {
 	const { productsInCart, addToCart, removeFromCart, deleteFromCart, clearFromCart } = useProductReducer()
 	return (
 		<CartContext.Provider

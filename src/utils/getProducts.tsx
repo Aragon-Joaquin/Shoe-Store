@@ -11,9 +11,9 @@ export async function getProducts(apiQuery: shapeOfQuery): Promise<productAdapte
 			const stringify: ServerResponse = await JSON.parse(JSON.stringify(dataJSON))
 			if (apiQuery === null) resolve(stringify)
 
+			console.log('searchBy', searchBy)
 			const productsFiltered = stringify.data.filter((product) => {
-				if (!searchBy) return product
-				return searchBy.filterName.every((filter) => filter === product[filter]) ? product : null
+				return product
 			})
 
 			resolve({ data: productsFiltered, length: productsFiltered.length })

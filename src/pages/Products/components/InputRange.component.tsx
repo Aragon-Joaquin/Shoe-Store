@@ -1,14 +1,10 @@
+import { useContext } from 'react'
 import { Button } from '../../../Components'
-import { productColors, productSizes } from '../../../models'
+import { productsInformation } from '../models/productsFilter.models'
 import { agroupCategories } from '../utils/agroupCategories'
 import AsideCategories from './aside/AsideCategories'
 import Slider from './Slider.component'
-
-interface productsInformation {
-	categories: Array<string[]>
-	colors: Array<productColors[]>
-	sizes: Array<productSizes[]>
-}
+import { SearchParamsContext } from '../../../context/searchParams.context'
 
 export function ProductsFilter({
 	productsInformation,
@@ -18,6 +14,7 @@ export function ProductsFilter({
 	totalPrice: Array<number>
 }) {
 	const { categories, sizes, colors } = productsInformation
+	const { queryCategories, paramsCategory } = useContext(SearchParamsContext)
 
 	return (
 		<aside className="flex flex-col items-start gap-y-2 px-5 py-10 w-72 ml-4 bg-mainPalette-softBrown1/50 rounded">
@@ -27,19 +24,28 @@ export function ProductsFilter({
 				</span>
 			</form>
 			<div className="flex flex-col gap-y-2 w-full">
-				{/* somewhat simplify this component */}
 				<AsideCategories
 					categories={agroupCategories(categories)}
 					sizes={agroupCategories(sizes, 'size')}
-					InfoColors={{ colors: agroupCategories(colors, 'colorName'), hexColors: colors.flat(1) }}
+					infoColors={{ colors: agroupCategories(colors, 'colorName'), hexColors: colors.flat(1) }}
+					stateManager={paramsCategory}
 				/>
 			</div>
-			<Button
-				onClick={(e) => console.log(e)}
-				className="mx-auto px-2 bg-mainPalette-softBrown2/40 border-2 border-mainPalette-darkBrown2"
-			>
-				Apply filters
-			</Button>
+
+			<div className="flex flex-row items-center justify-center flex-wrap gap-2">
+				<Button
+					onClick={() => queryCategories()}
+					className="mx-auto px-2 bg-mainPalette-softBrown2/40 border-2 border-mainPalette-darkBrown2 text-nowrap w-min"
+				>
+					Apply filters
+				</Button>
+				<Button
+					onClick={() => queryCategories()}
+					className="mx-auto px-2 bg-mainPalette-darkBrown2 border-2 border-mainPalette-softBrown2/40 text-nowrap w-min"
+				>
+					Delete filters
+				</Button>
+			</div>
 		</aside>
 	)
 }

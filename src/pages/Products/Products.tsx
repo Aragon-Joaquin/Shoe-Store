@@ -7,13 +7,17 @@ import { Arrow } from '../../assets'
 
 //@ts-expect-error: This is an alias for the assets/images folder setup in Vite.config
 import imageAsExample from '@images/portraitShoe.webp'
+import { useContext } from 'react'
+import { SearchParamsContext } from '../../context/searchParams.context'
 
 export default function Products({ idPage }: { idPage: number }) {
+	const { searchParams } = useContext(SearchParamsContext)
+
 	const {
 		returnResponse,
 		apiQuery,
 		cartActions: { addCart }
-	} = useGetProducts({ limit: 8 })
+	} = useGetProducts({ limit: 8, searchBy: { productName: searchParams?.entries() ?? null } })
 
 	const productsInformation = {
 		//todo: improve this
@@ -26,8 +30,8 @@ export default function Products({ idPage }: { idPage: number }) {
 			<Carrousel />
 
 			<Title className="mt-10 bg-mainPalette-darkBrown3 rounded-md px-4 border-2 border-mainPalette-softBrown1/50">
-				{apiQuery?.searchBy?.filterName !== undefined
-					? `Searching by ${apiQuery.searchBy.filterName}`
+				{apiQuery?.searchBy?.categoryName !== undefined
+					? `Searching by ${apiQuery.searchBy.categoryName}`
 					: 'No filters applied.'}
 			</Title>
 
