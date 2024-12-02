@@ -6,13 +6,13 @@ export interface API_RESPONSE {
 	productType: string
 	productShortDescription: string | ''
 	productLongDescription: string
-	productDetails: Array<string> | []
+	productDetails: Array<string>
 	productManufacturer: string
 	productSizes: Array<productSizes>
 	productColors: Array<productColors>
 	productPrice: number
-	productTags: Array<string> | []
-	productImages: Array<productsImages> | []
+	productTags: Array<string>
+	productImages: Array<productsImages>
 }
 export interface productInformation extends API_RESPONSE {
 	quantityInCart: number

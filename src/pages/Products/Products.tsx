@@ -15,9 +15,8 @@ export default function Products({ idPage }: { idPage: number }) {
 
 	const {
 		returnResponse,
-		apiQuery,
 		cartActions: { addCart }
-	} = useGetProducts({ limit: 8, searchBy: { productName: searchParams?.entries() ?? null } })
+	} = useGetProducts({ limit: 8, searchParams: searchParams.toString() ?? null })
 
 	const productsInformation = {
 		//todo: improve this
@@ -30,8 +29,8 @@ export default function Products({ idPage }: { idPage: number }) {
 			<Carrousel />
 
 			<Title className="mt-10 bg-mainPalette-darkBrown3 rounded-md px-4 border-2 border-mainPalette-softBrown1/50">
-				{apiQuery?.searchBy?.categoryName !== undefined
-					? `Searching by ${apiQuery.searchBy.categoryName}`
+				{searchParams.size > 0
+					? `Searching by ${searchParams.size} ${searchParams.size > 1 ? 'filters' : 'filter'}`
 					: 'No filters applied.'}
 			</Title>
 

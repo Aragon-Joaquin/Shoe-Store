@@ -5,6 +5,7 @@ import { agroupCategories } from '../utils/agroupCategories'
 import AsideCategories from './aside/AsideCategories'
 import Slider from './Slider.component'
 import { SearchParamsContext } from '../../../context/searchParams.context'
+import { useNavigate } from 'react-router-dom'
 
 export function ProductsFilter({
 	productsInformation,
@@ -15,6 +16,7 @@ export function ProductsFilter({
 }) {
 	const { categories, sizes, colors } = productsInformation
 	const { queryCategories, paramsCategory } = useContext(SearchParamsContext)
+	const navigate = useNavigate()
 
 	return (
 		<aside className="flex flex-col items-start gap-y-2 px-5 py-10 w-72 ml-4 bg-mainPalette-softBrown1/50 rounded">
@@ -40,7 +42,7 @@ export function ProductsFilter({
 					Apply filters
 				</Button>
 				<Button
-					onClick={() => queryCategories()}
+					onClick={() => navigate(window.location.pathname)}
 					className="mx-auto px-2 bg-mainPalette-darkBrown2 border-2 border-mainPalette-softBrown2/40 text-nowrap w-min"
 				>
 					Delete filters

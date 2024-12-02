@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { getProducts } from '../utils'
-import { productAdapted, shapeOfQuery } from '../models'
+import { apiRequest, productAdapted } from '../models'
 import { useGetContext } from './hooks/useGetContext.hook'
 
-export function useGetProducts(apiQuery: shapeOfQuery | null) {
+export function useGetProducts(apiQuery: apiRequest | null) {
 	const { productsInCart, totalPrice, cartActions } = useGetContext()
 
 	const [returnResponse, setReturnResponse] = useState([] as Array<productAdapted> | [])
-	const lastQuery = useRef<shapeOfQuery>()
+	const lastQuery = useRef<apiRequest>()
 
 	useEffect(() => {
 		if (apiQuery === null) return

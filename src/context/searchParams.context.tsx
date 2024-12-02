@@ -1,14 +1,10 @@
 import { createContext, useCallback, useState } from 'react'
-import { contextProps, searchParamsContext } from './models/context.model'
+
 import { useSearchParams } from 'react-router-dom'
-import { productInformation, shapeOfQuery } from '../models'
+import { contextProps, multipleQuery, searchParamsContext } from './models'
+import { shapeOfQuery } from '../models'
 
 export const SearchParamsContext = createContext({} as searchParamsContext)
-
-interface multipleQuery {
-	productName: (string | number)[]
-	categoryName: keyof productInformation
-}
 
 export function UseSearchParamsContext({ children }: contextProps) {
 	const [searchParams, setSearchParams] = useSearchParams(window.location.search)
@@ -23,13 +19,8 @@ export function UseSearchParamsContext({ children }: contextProps) {
 				return params
 			})
 		})
-		console.log('searchParams in URL', searchParams)
 	}
-	// ;[
-	// 	['foo', ['bar', 'asd']],
-	// 	['foo', 'baz'],
-	// 	['foo', 'qux']
-	// ]
+
 	const paramsCategory = useCallback(
 		(searchBy: shapeOfQuery['searchBy']) => {
 			if (!searchBy?.categoryName || !searchBy.productName) return

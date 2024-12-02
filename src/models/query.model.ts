@@ -6,6 +6,9 @@ export type shapeOfQuery = {
 		productName?: string | number | undefined
 		categoryName?: keyof productInformation
 	}
+}
+export type apiRequest = {
 	limit?: number
 	offset?: number
+	searchParams?: string
 }

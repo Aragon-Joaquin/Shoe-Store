@@ -7,8 +7,7 @@ import {
 	type_DELETE_CART,
 	type_REMOVE_CART
 } from '../reducers'
-import { cartCreateContext } from './models/cartContext.interface'
-import { contextProps } from './models/context.model'
+import { cartCreateContext, contextProps } from './models'
 
 export const CartContext = createContext({} as cartCreateContext)
 
