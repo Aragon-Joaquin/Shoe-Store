@@ -13,12 +13,16 @@ export function UseSearchParamsContext({ children }: contextProps) {
 	const queryCategories = () => {
 		if (!filterParams) return
 		filterParams.forEach((searchObj) => {
-			console.log('asd', searchObj.categoryName, searchObj.productName)
 			setSearchParams((params) => {
 				params.set(`${searchObj.categoryName}`, `${searchObj.productName.join('_')}`)
 				return params
 			})
 		})
+	}
+
+	const deleteCategories = () => {
+		setFilterParams([])
+		setSearchParams()
 	}
 
 	const paramsCategory = useCallback(
@@ -34,7 +38,6 @@ export function UseSearchParamsContext({ children }: contextProps) {
 					{ categoryName: categoryName, productName: [productName] }
 				])
 
-			console.log(filterParams[0].productName.includes(productName))
 			if (filterParams[0].productName.includes(productName))
 				return setFilterParams((prevState) => [
 					...prevState.slice(0, hasCategory),
@@ -52,7 +55,7 @@ export function UseSearchParamsContext({ children }: contextProps) {
 		},
 		[filterParams]
 	)
-	console.log(filterParams)
+	console.log('setFilterParams', filterParams)
 	//! this should look like this
 	// [
 	// 	{	productName: [""], categoryName: "categories"	},
@@ -64,7 +67,8 @@ export function UseSearchParamsContext({ children }: contextProps) {
 			value={{
 				searchParams,
 				queryCategories,
-				paramsCategory
+				paramsCategory,
+				deleteCategories
 			}}
 		>
 			{children}

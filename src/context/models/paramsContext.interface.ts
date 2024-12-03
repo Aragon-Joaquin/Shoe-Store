@@ -7,5 +7,6 @@ export interface multipleQuery {
 export interface searchParamsContext {
 	searchParams: URLSearchParams
 	queryCategories: () => void
+	deleteCategories: () => void
 	paramsCategory: (shape: shapeOfQuery['searchBy']) => void
 }

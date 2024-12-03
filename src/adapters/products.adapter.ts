@@ -1,8 +1,8 @@
-import { productAdapted, productInformation } from '../models'
+import { API_RESPONSE, productAdapted } from '../models'
 import { renameProducts } from './utils/renameProducts.utils'
 
 export type ServerResponse = {
-	data: Array<productInformation>
+	data: Array<API_RESPONSE>
 	length: number
 }
 

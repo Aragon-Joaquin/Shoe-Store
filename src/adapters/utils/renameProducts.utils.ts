@@ -1,6 +1,6 @@
-import { productInformation } from '../../models/product.interface'
+import { API_RESPONSE } from '../../models/product.interface'
 
-export function renameProducts(product: productInformation) {
+export function renameProducts(product: API_RESPONSE) {
 	const {
 		idProduct,
 		productTitle,
@@ -13,8 +13,7 @@ export function renameProducts(product: productInformation) {
 		productColors,
 		productPrice,
 		productTags,
-		productImages,
-		quantityInCart
+		productImages
 	} = product
 
 	return {
@@ -30,6 +29,6 @@ export function renameProducts(product: productInformation) {
 		price: productPrice,
 		tags: productTags,
 		images: productImages,
-		quantityInCart
+		quantityInCart: 0
 	}
 }
