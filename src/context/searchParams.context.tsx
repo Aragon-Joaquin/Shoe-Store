@@ -38,15 +38,20 @@ export function UseSearchParamsContext({ children }: contextProps) {
 					{ categoryName: categoryName, productName: [productName] }
 				])
 
-			if (filterParams[0].productName.includes(productName))
-				return setFilterParams((prevState) => [
-					...prevState.slice(0, hasCategory),
-					{
-						categoryName: filterParams[hasCategory].categoryName,
-						productName: [...filterParams[0].productName.filter((prd) => prd !== productName)]
-					},
-					...prevState.slice(hasCategory + 1)
-				])
+			if (filterParams[hasCategory].productName.includes(productName))
+				return setFilterParams((prevState) => {
+					if (filterParams[hasCategory].productName.length <= 1)
+						return [...prevState.slice(0, hasCategory), ...prevState.slice(hasCategory + 1)]
+					return [
+						...prevState.slice(0, hasCategory),
+						{
+							categoryName: filterParams[hasCategory].categoryName,
+							productName: [...filterParams[hasCategory].productName.filter((prd) => prd !== productName)]
+						},
+						...prevState.slice(hasCategory + 1)
+					]
+				})
+
 			return setFilterParams((prevState) => [
 				...prevState.slice(0, hasCategory),
 				{ ...filterParams[hasCategory], productName: [...filterParams[hasCategory].productName, productName] },
@@ -55,12 +60,11 @@ export function UseSearchParamsContext({ children }: contextProps) {
 		},
 		[filterParams]
 	)
-	console.log('setFilterParams', filterParams)
 	//! this should look like this
 	// [
 	// 	{	productName: [""], categoryName: "categories"	},
 	// 	{	productName: [""], categoryName: "colors"		}
-	// ]
+	//
 
 	return (
 		<SearchParamsContext.Provider
