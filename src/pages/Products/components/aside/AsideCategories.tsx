@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import { searchParamsContext } from '../../../../context/models'
+import { useContext } from 'react'
+import { keyType, searchParamsContext } from '../../../../context/models'
 import { productColors } from '../../../../models'
 import Category from './Category'
-
-type keyType = string | number | undefined
+import { SearchParamsContext } from '../../../../context/searchParams.context'
 
 const onHover = `transition-all duration-100 hover:scale-110 cursor-pointer`
 
@@ -20,14 +19,11 @@ export default function AsideCategories({
 }) {
 	const { colors, hexColors } = infoColors
 	//i shouldn't use this state here ('cause states could desync). i learn my lesson but i wont refactor the entire code again
-	const [selectedParams, setSelectedParams] = useState<Array<string | number>>([])
+	const { handleSelectedParams, selectedParams } = useContext(SearchParamsContext)
 
 	const handleMultipleFunc = (keyName: keyType, ...paramsArgs: Parameters<typeof stateManager>) => {
 		stateManager(...paramsArgs)
-		if (!keyName) return
-		return selectedParams.includes(keyName)
-			? setSelectedParams((prevState) => prevState.filter((elmnt) => elmnt !== keyName))
-			: setSelectedParams((prevState) => [...prevState, keyName])
+		handleSelectedParams(keyName)
 	}
 
 	const returnIfExist = (keyName: keyType): boolean => selectedParams.includes(keyName ?? '')

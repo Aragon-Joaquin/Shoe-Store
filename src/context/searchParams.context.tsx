@@ -1,7 +1,7 @@
 import { createContext, useCallback, useState } from 'react'
 
 import { useSearchParams } from 'react-router-dom'
-import { contextProps, multipleQuery, searchParamsContext } from './models'
+import { contextProps, keyType, multipleQuery, searchParamsContext } from './models'
 import { shapeOfQuery } from '../models'
 
 export const SearchParamsContext = createContext({} as searchParamsContext)
@@ -9,6 +9,14 @@ export const SearchParamsContext = createContext({} as searchParamsContext)
 export function UseSearchParamsContext({ children }: contextProps) {
 	const [searchParams, setSearchParams] = useSearchParams(window.location.search)
 	const [filterParams, setFilterParams] = useState<Array<multipleQuery>>([])
+	const [selectedParams, setSelectedParams] = useState<Array<string | number>>([])
+
+	const handleSelectedParams = (keyName: keyType) => {
+		if (!keyName) return
+		return selectedParams.includes(keyName)
+			? setSelectedParams((prevState) => prevState.filter((elmnt) => elmnt !== keyName))
+			: setSelectedParams((prevState) => [...prevState, keyName])
+	}
 
 	const queryCategories = () => {
 		if (!filterParams) return
@@ -22,6 +30,7 @@ export function UseSearchParamsContext({ children }: contextProps) {
 
 	const deleteCategories = () => {
 		setFilterParams([])
+		setSelectedParams([])
 		setSearchParams()
 	}
 
@@ -70,9 +79,11 @@ export function UseSearchParamsContext({ children }: contextProps) {
 		<SearchParamsContext.Provider
 			value={{
 				searchParams,
+				selectedParams,
 				queryCategories,
 				paramsCategory,
-				deleteCategories
+				deleteCategories,
+				handleSelectedParams
 			}}
 		>
 			{children}

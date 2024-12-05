@@ -19,11 +19,12 @@ export function checkIfHasProduct(
 	if (!category || !prodFilter || !product) return false
 	const productFound = product[category as keyof typeof product]
 
-	if (typeof productFound === 'string' || typeof productFound === 'number') return productFound === prodFilter
+	console.log({ productFound, prodFilter }, productFound == prodFilter)
+	if (typeof productFound === 'string' || typeof productFound === 'number') return productFound == prodFilter
 
 	return productFound.some((element) => {
 		if (typeof element === 'string') return element === prodFilter
 		//@ts-expect-error: throws that the element is the 3 types at the same time, idk how to fix that
-		return HASH_CATEGORIES[category](element) === prodFilter
+		return HASH_CATEGORIES[category](element) == prodFilter
 	})
 }
