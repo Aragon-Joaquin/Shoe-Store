@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Arrow } from '../assets'
 import { useGetProducts } from '../hooks'
-import { shapeOfQuery } from '../models'
+import { apiRequest } from '../models'
 import { formattToARS, SCROLLTO_SLIDE_PX } from '../utils'
 import { Button } from './Button.component'
 import { Title } from './Title.component'
@@ -15,7 +15,7 @@ function getImage() {
 	//! improve this logic
 }
 
-export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuery: shapeOfQuery; titleName: string }) {
+export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuery: apiRequest; titleName: string }) {
 	//filter - query
 	const {
 		returnResponse,

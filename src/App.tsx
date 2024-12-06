@@ -3,7 +3,7 @@ import { lazy } from 'react'
 import { UseCartContext } from './context/cart.context.tsx'
 
 import Layout from './pages/Layout/Layout.tsx'
-import { ValidateProducts } from './Components/index.ts'
+import { ValidateProducts, ValidateShowProduct } from './Components/index.ts'
 
 const LandingPage = lazy(() => import('./pages/LadingPage/LandingPage.tsx'))
 const Error404 = lazy(() => import('./pages/ErrorPage/ErrorPage.tsx'))
@@ -14,6 +14,7 @@ const router = createBrowserRouter(
 			<Route index path="/" element={<LandingPage />} />
 			<Route path="/products" element={<ValidateProducts />} />
 			<Route path="/products/:productsPage" element={<ValidateProducts />} />
+			<Route path="/seeProduct/:productName" element={<ValidateShowProduct />} />
 			<Route path="*" element={<Error404 />} />
 		</Route>
 	),
