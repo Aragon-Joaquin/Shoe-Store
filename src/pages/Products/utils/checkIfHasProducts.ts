@@ -16,7 +16,12 @@ export function checkIfHasProduct(
 	prodFilter: string | number | undefined,
 	product: API_RESPONSE | productInformation
 ): boolean {
-	if (!category || !prodFilter || !product) return false
+	console.log({ category, prodFilter })
+	if (!category || !product) return false
+
+	// this is only when searching for product titles without remaking this again
+	if (!prodFilter) return category === product['productTitle']
+
 	const productFound = product[category as keyof typeof product]
 
 	console.log({ productFound, prodFilter }, productFound == prodFilter)

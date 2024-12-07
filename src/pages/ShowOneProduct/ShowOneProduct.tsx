@@ -28,7 +28,7 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 			</h2>
 			<main className="flex flex-row w-4/5 m-auto mt-6 ">
 				{/* //! images */}
-				<aside className="flex flex-col gap-y-4 items-center bg-mainPalette-darkBrown2 p-4 rounded-xl border-2 border-mainPalette-softBrown2 h-fit">
+				<aside className="flex flex-col gap-y-4 items-center bg-mainPalette-darkBrown2 p-4 rounded-xl border-2 border-mainPalette-softBrown2">
 					<h3 className="text-lg font-medium">All images</h3>
 					{singleProduct.images.map((image) => {
 						return (
@@ -48,11 +48,16 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 					})}
 				</aside>
 				{/* //! main */}
-				<div className="flex-grow flex flex-col justify-center items-center bg-zinc-800/50 mx-2 rounded-2xl h-96 w-auto">
+				<div className="flex-grow flex flex-col justify-center items-center  bg-zinc-800/50 mx-2 rounded-2xl relative w-auto h-96">
 					<img
 						src={`${coverImage?.image?.images[coverImage.currentImageFocus] ?? imageOnError()}`}
 						className="aspect-square p-5 h-full w-auto object-cover hover:scale-110 transition-all cursor-pointer"
 					/>
+					<span className="flex flex-row gap-x-1 text-lg absolute bottom-0 right-0 -translate-x-1/2 -translate-y-1/2">
+						{/* i can use an ucon, if i have one */}
+						by
+						<strong className="font-semibold">{singleProduct.manufacturer}</strong>
+					</span>
 					<ul className="flex flex-row gap-x-2">
 						{coverImage?.image?.images.map((_, idx) => {
 							return (
@@ -67,17 +72,16 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 				</div>
 				{/* //! info */}
 				<aside className="flex flex-col gap-y-4 bg-mainPalette-darkBrown3 p-4 rounded-xl border-2 border-mainPalette-softBrown1 w-2/6 h-fit">
-					<div className="flex flex-row justify-center border-b-2 border-mainPalette-softBrown1 relative">
-						<span className="w-full flex flex-row justify-center items-baseline ">
-							<h4 className="font-bold text-xl">{singleProduct.title}</h4>
-							<p className="text-base text-gray-300 ml-4">{singleProduct.manufacturer}</p>
-						</span>
-						<h4 className="absolute top-0 right-0 -translate-x-4 text-xl font-bold text-lime-600">
-							{formattToARS.format(singleProduct.price)}
-						</h4>
-					</div>
+					<span className="w-full flex flex-row justify-center items-baseline border-b-2 border-mainPalette-softBrown1">
+						<h4 className="font-bold text-xl">{singleProduct.title}</h4>
+						<p className="text-base text-gray-300 ml-4">{singleProduct.type}</p>
+					</span>
+
+					<h4 className="w-fit text-2xl font-bold text-lime-600">{formattToARS.format(singleProduct.price)}</h4>
+
 					<div>
 						<h3 className="font-semibold text-lg mb-1">Brief description</h3>
+
 						<p className="p-2 bg-mainPalette-darkBrown2 rounded-md text-pretty">{singleProduct.shortDesc}</p>
 					</div>
 					<div>
