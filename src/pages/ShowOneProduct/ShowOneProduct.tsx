@@ -6,6 +6,7 @@ import { useGetProducts } from '../../hooks'
 import ProductCarrousel from '../../Components/ProductCarrousel.component'
 import { coverImage } from './models'
 import { imageOnError } from './utils/utils'
+import { Link } from 'react-router-dom'
 
 export default function ShowOneProduct({ singleProduct }: { singleProduct: productAdapted }) {
 	const [coverImage, setCoverImage] = useState<coverImage>({
@@ -47,10 +48,10 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 					})}
 				</aside>
 				{/* //! main */}
-				<div className="flex-grow flex flex-col justify-center items-center bg-zinc-800/50 mx-2 rounded-2xl">
+				<div className="flex-grow flex flex-col justify-center items-center bg-zinc-800/50 mx-2 rounded-2xl h-96 w-auto">
 					<img
 						src={`${coverImage?.image?.images[coverImage.currentImageFocus] ?? imageOnError()}`}
-						className="aspect-square w-7/12 h-auto object-cover hover:scale-110 transition-all cursor-pointer"
+						className="aspect-square p-5 h-full w-auto object-cover hover:scale-110 transition-all cursor-pointer"
 					/>
 					<ul className="flex flex-row gap-x-2">
 						{coverImage?.image?.images.map((_, idx) => {
@@ -79,7 +80,6 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 						<h3 className="font-semibold text-lg mb-1">Brief description</h3>
 						<p className="p-2 bg-mainPalette-darkBrown2 rounded-md text-pretty">{singleProduct.shortDesc}</p>
 					</div>
-
 					<div>
 						<h3 className="font-semibold text-lg mb-1">Variants</h3>
 
@@ -87,16 +87,18 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 							<div>
 								<h4 className="font-medium text-center">Size</h4>
 								<ul className="flex flex-row justify-center gap-2">
-									{singleProduct.sizes.map(({ size }) => {
-										return (
-											<li
-												key={size}
-												className={`bg-slate-500/20 font-medium rounded px-2 py-1 transition-all duration-100 hover:scale-110 cursor-pointer`}
-											>
-												<span>{size}</span>
-											</li>
-										)
-									})}
+									{singleProduct.sizes
+										.sort((a, b) => a.size - b.size)
+										.map(({ size }) => {
+											return (
+												<li
+													key={size}
+													className={`bg-slate-500/20 font-medium rounded px-2 py-1 transition-all duration-100 hover:scale-110 cursor-pointer`}
+												>
+													<span>{size}</span>
+												</li>
+											)
+										})}
 								</ul>
 							</div>
 							<div>
@@ -124,27 +126,42 @@ export default function ShowOneProduct({ singleProduct }: { singleProduct: produ
 					</Button>
 				</aside>
 			</main>
-			<span>
-				{singleProduct.tags.map((tags) => {
-					return tags
-				})}
-			</span>
+			{/* //! long description  */}
+			<section className="w-full">
+				<span className="mt-8 w-1/2 m-auto flex flex-row justify-around bg-customBrown-colorTerciary border-2 border-mainPalette-softBrown1 px-4 py-2">
+					{singleProduct.tags.map((tags) => {
+						return (
+							<Link to={{ pathname: `/products`, search: `productTags=${tags}` }} key={tags}>
+								<p className="cursor-pointer font-medium text-lg hover:scale-110 transition-all">{tags}</p>
+							</Link>
+						)
+					})}
+				</span>
 
-			<article>
-				<h3>{singleProduct.title}</h3>
-				<div>
-					<span>
-						<p>{singleProduct.longDesc}</p>
-						<ul>
-							{singleProduct.details.map((detail, idx) => {
-								return <li key={idx}>{detail}</li>
-							})}
-						</ul>
+				<article className="w-11/12 m-auto mt-10 bg-mainPalette-darkBrown3 p-4 rounded-xl border-2 border-mainPalette-softBrown1 flex flex-col gap-y-2">
+					<h3 className="text-2xl font-bold">{singleProduct.title}</h3>
+					<span className="flex flex-col gap-y-4">
+						<div>
+							<h4 className="text-lg font-medium">Description</h4>
+							<p className="text-pretty bg-mainPalette-darkBrown1 p-2 rounded-md">{singleProduct.longDesc}</p>
+						</div>
+						<div>
+							<h4 className="text-lg font-medium">Details</h4>
+							<ul className="flex flex-col justify-start ml-10 gap-y-1">
+								{singleProduct.details.map((detail, idx) => {
+									return (
+										<li className="list-disc" key={idx}>
+											{detail}
+										</li>
+									)
+								})}
+							</ul>
+						</div>
 					</span>
-				</div>
-			</article>
-			<ProductCarrousel apiQuery={{}} titleName="Other products you might like"></ProductCarrousel>
-			<ProductCarrousel apiQuery={{}} titleName="Products that you saw earlier"></ProductCarrousel>
+				</article>
+				<ProductCarrousel apiQuery={{}} titleName="Other products you might like"></ProductCarrousel>
+				<ProductCarrousel apiQuery={{}} titleName="Products that you saw earlier"></ProductCarrousel>
+			</section>
 		</>
 	)
 }

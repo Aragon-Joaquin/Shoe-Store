@@ -44,7 +44,7 @@ export default function Products({ idPage }: { idPage: number }) {
 								key={product.idProduct}
 							>
 								<Link
-									to={`/${product.title}`}
+									to={`/seeProduct/${product.title}`}
 									className='w-full flex justify-center 
 									after:content-[""] after:h-0.5 after:w-full after:bg-neutral-600/50 after:absolute after:bottom-2'
 								>
