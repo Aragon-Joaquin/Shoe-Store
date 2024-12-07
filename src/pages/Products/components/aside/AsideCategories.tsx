@@ -52,7 +52,7 @@ export default function AsideCategories({
 					return (
 						<li
 							key={key.at(0)}
-							className={`bg-slate-500/20 font-medium rounded px-2 py-1 hover:scale-110 cursor-pointer ${onHover}  ${
+							className={`bg-slate-500/20 font-medium rounded px-2 py-1 ${onHover}  ${
 								returnIfExist(key.at(0)) || 'opacity-50'
 							}`}
 							onClick={() => handleMultipleFunc(key.at(0), { productName: key?.at(0), categoryName: 'productSizes' })}

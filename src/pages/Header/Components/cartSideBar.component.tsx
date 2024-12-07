@@ -22,7 +22,7 @@ export default function CartSideBar({ onClick }: { onClick: () => void }) {
 					{formattToARS.format(totalPrice)}
 				</span>
 			</div>
-			<ul className="list-none h-full flex flex-col gap-y-3 overflow-y-scroll pb-24">
+			<ul className="list-none h-full flex flex-col gap-y-3 overflow-y-auto pb-24">
 				{productsInCart.length > 0 ? (
 					productsInCart.map((product) => {
 						return (

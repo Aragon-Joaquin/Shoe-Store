@@ -10,7 +10,7 @@ const Error404 = lazy(() => import('./pages/ErrorPage/ErrorPage.tsx'))
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route path="/" element={<Layout />}>
+		<Route path="/" element={<Layout />} errorElement={<Error404 />}>
 			<Route index path="/" element={<LandingPage />} />
 			<Route path="/products" element={<ValidateProducts />} />
 			<Route path="/products/:productsPage" element={<ValidateProducts />} />

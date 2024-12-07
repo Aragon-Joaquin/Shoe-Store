@@ -35,7 +35,7 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 	return (
 		<aside className="my-10">
 			<div className="flex justify-center">
-				<Title className="bg-mainPalette-darkBrown3 w-min px-10 rounded-t-md border-2 border-mainPalette-softBrown1 border-b-transparent">
+				<Title className="bg-mainPalette-darkBrown3 w-min text-nowrap px-10 rounded-t-md border-2 border-mainPalette-softBrown1 border-b-transparent">
 					{titleName}
 				</Title>
 			</div>
@@ -49,9 +49,12 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 						return (
 							<section
 								key={product.idProduct}
-								className="border-2 border-mainPalette-darkBrown1 rounded-md p-4 bg-mainPalette-darkBrown2/30 w-52 flex flex-col"
+								className="border-2 border-mainPalette-darkBrown1 rounded-md p-4 bg-mainPalette-darkBrown2/30 w-40 flex flex-col"
 							>
-								<Link to={product.title} className="h-40 border-b-2 border-b-mainPalette-darkBrown2 mb-2">
+								<Link
+									to={`/seeProduct/${product.title}`}
+									className="h-32 border-b-2 border-b-mainPalette-darkBrown2 mb-2"
+								>
 									<img
 										src={getImage()}
 										alt={product.title}
