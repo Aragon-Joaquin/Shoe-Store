@@ -11,8 +11,9 @@ export function InputLogic({ quantity, product }: { quantity: number; product: p
 		cartActions: { addCart, removeCart }
 	} = useGetProducts(null)
 
-	const controlQuantity = debouncer((addQuant: number) => {
+	const controlQuantity = debouncer((...args: unknown[]) => {
 		const { current } = inputRef
+		const addQuant = Number(args)
 
 		//maybe in a future i use this logic with a custom hook in ./utils
 		if (current?.valueAsNumber == null) return
@@ -20,7 +21,7 @@ export function InputLogic({ quantity, product }: { quantity: number; product: p
 
 		if (current.valueAsNumber + addQuant >= 1 && current.valueAsNumber + addQuant <= MAX_QUANTITY_PRODUCTCART)
 			addCart(product, addQuant)
-	}, 150)
+	}, 100)
 
 	return (
 		<div className="flex flex-col justify-center items-center px-2">

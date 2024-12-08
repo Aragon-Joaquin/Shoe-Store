@@ -8,7 +8,6 @@ import { checkIfHasProduct } from '../pages/Products/utils/checkIfHasProducts'
 export async function getProducts(apiQuery: apiRequest): Promise<productAdapted[]> {
 	const { limit, offset, searchParams } = apiQuery
 	const newSearchParams = new URLSearchParams(searchParams ?? '')
-	console.log({ newSearchParams: newSearchParams.toString() })
 	const response = await new Promise<ServerResponse>((resolve) => {
 		setTimeout(async () => {
 			const stringify: ServerResponse = await JSON.parse(JSON.stringify(dataJSON))

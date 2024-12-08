@@ -4,7 +4,7 @@ interface ButtonParams {
 	children: ReactNode
 	className?: string
 	type?: 'submit' | 'button'
-	onClick: React.MouseEventHandler<HTMLButtonElement>
+	onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export function Button({ type = 'button', children, className = '', onClick }: ButtonParams) {

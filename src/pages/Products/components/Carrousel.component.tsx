@@ -36,7 +36,7 @@ export function Carrousel() {
 							src={image}
 							alt={`Image of the shoes "${carrInfo.productName}"`}
 							title={carrInfo.productName}
-							className={`h-full w-full object-cover aspect-video rounded-md shadow-md select-none transition-all
+							className={`h-full w-full object-cover aspect-[20/7] rounded-md shadow-md select-none transition-all
                             ${carrouselPosition === idx ? 'relative opacity-100' : 'absolute opacity-0'}`}
 						/>
 					</a>
