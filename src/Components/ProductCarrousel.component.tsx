@@ -18,7 +18,7 @@ function getImage() {
 export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuery: apiRequest; titleName: string }) {
 	//filter - query
 	const {
-		returnResponse,
+		responseData: { returnResponse },
 		cartActions: { addCart }
 	} = useGetProducts(apiQuery)
 

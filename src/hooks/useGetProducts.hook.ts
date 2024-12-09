@@ -3,10 +3,15 @@ import { getProducts } from '../utils'
 import { apiRequest, productAdapted } from '../models'
 import { useGetContext } from './hooks/useGetContext.hook'
 
+interface ResponseInformation {
+	returnResponse: Array<productAdapted> | []
+	isEmpty: boolean | null
+}
+
 export function useGetProducts(apiQuery: apiRequest | null) {
 	const { productsInCart, totalPrice, cartActions } = useGetContext()
 
-	const [returnResponse, setReturnResponse] = useState([] as Array<productAdapted> | [])
+	const [responseData, setResponseData] = useState<ResponseInformation>({ returnResponse: [], isEmpty: null })
 	const lastQuery = useRef<apiRequest>()
 
 	useEffect(() => {
@@ -15,15 +20,16 @@ export function useGetProducts(apiQuery: apiRequest | null) {
 		if (JSON.stringify(lastQuery.current) === JSON.stringify(apiQuery)) return
 		lastQuery.current = apiQuery
 		async function waitToResponse() {
-			const responseData = await getProducts(apiQuery!)
-			setReturnResponse(responseData)
+			const returnResponse = await getProducts(apiQuery!)
+			if (returnResponse.length > 0) setResponseData({ returnResponse, isEmpty: true })
+			setResponseData({ returnResponse, isEmpty: false })
 		}
 		waitToResponse()
 	}, [apiQuery])
 
 	return {
 		apiQuery,
-		returnResponse,
+		responseData,
 		productFromCart: {
 			productsInCart,
 			totalPrice

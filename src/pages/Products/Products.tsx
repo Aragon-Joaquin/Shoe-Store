@@ -14,7 +14,7 @@ export default function Products({ idPage }: { idPage: number }) {
 	const { searchParams } = useContext(SearchParamsContext)
 
 	const {
-		returnResponse,
+		responseData: { returnResponse },
 		cartActions: { addCart }
 	} = useGetProducts({ limit: 8, searchParams: searchParams.toString() ?? null })
 

@@ -9,7 +9,9 @@ import ProductServices from './components/ProductServices.component.tsx'
 import ProductCarrousel from '../../Components/ProductCarrousel.component.tsx'
 
 export default function LandingPage() {
-	const { returnResponse } = useGetProducts({ limit: 2 })
+	const {
+		responseData: { returnResponse }
+	} = useGetProducts({ limit: 2 })
 
 	return (
 		<>

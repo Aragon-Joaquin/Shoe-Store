@@ -7,7 +7,11 @@ const ShowOneProduct = lazy(() => import('../../pages/ShowOneProduct/ShowOneProd
 
 export function ValidateShowProduct() {
 	const { productName } = useParams()
-	const { returnResponse } = useGetProducts({ searchParams: productName ?? '', limit: 1 })
+	const {
+		responseData: { returnResponse, isEmpty }
+	} = useGetProducts({ searchParams: productName ?? '', limit: 1 })
 
-	return returnResponse[0] == null ? <ProductNotFound /> : <ShowOneProduct singleProduct={returnResponse[0]} />
+	// i have no idea how to do when the state is RENDERED
+	if (isEmpty === true) return <ProductNotFound />
+	if (isEmpty === false) return <ShowOneProduct singleProduct={returnResponse[0]} />
 }
