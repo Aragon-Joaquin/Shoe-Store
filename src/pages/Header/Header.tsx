@@ -18,7 +18,7 @@ export default function Header() {
 	const handleToggle = useCallback(() => setToggleCart((prev) => !prev), [toggleMenu])
 
 	return (
-		<nav className=" flex flex-row sm:justify-around justify-between px-4 md:px-10 py-3 items-center bg-mainPalette-darkBrown2 rounded-b-lg overflow-hidden  shadow-lg">
+		<nav className="flex flex-row sm:justify-around justify-between px-4 md:px-10 py-3 items-center bg-mainPalette-darkBrown2 rounded-b-lg overflow-hidden  shadow-lg">
 			<div className="flex flex-row gap-x-2 items-center">
 				<AppLogo
 					titleClassName="text-nowrap text-lg md:text-2xl gap-x-1 md:gap-x-2"
@@ -29,7 +29,9 @@ export default function Header() {
 					{differentRoutes.map((route) => {
 						return (
 							<li key={route.URLName}>
-								<Route anchorURL={`/${route.URLhref}`}>{route.URLName}</Route>
+								<Route anchorURL={`/${route.URLhref}`} className="text-sm sm:text-base">
+									{route.URLName}
+								</Route>
 							</li>
 						)
 					})}

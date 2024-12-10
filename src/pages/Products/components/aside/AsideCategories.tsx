@@ -71,7 +71,7 @@ export default function AsideCategories({
 							key={key.at(0)}
 							title={`${key.at(0)}`}
 							style={{ backgroundColor: `${hexCode?.hexColor || '#000'}` }}
-							className={`w-fit relative font-medium px-2 rounded-sm [text-shadow:_0_1px_4px_rgb(0_0_0_/_100%)] ${onHover}  ${
+							className={`w-max relative font-medium px-2 rounded-sm [text-shadow:_0_1px_4px_rgb(0_0_0_/_100%)] ${onHover}  ${
 								returnIfExist(key.at(0)) || 'opacity-50'
 							}`}
 							onClick={() => handleMultipleFunc(key.at(0), { productName: key?.at(0), categoryName: 'productColors' })}

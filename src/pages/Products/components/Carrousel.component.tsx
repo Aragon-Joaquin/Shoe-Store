@@ -9,6 +9,8 @@ const CARROUSEL_HIGHLIGHTED = [
 	{ id: 3, productName: 'Sub-Kool' }
 ] as const
 
+const ARROW_SHARED_CLASSNAME =
+	'absolute z-10 top-1/2 -translate-y-1/2 opacity-50 active:opacity-100 sm:hover:opacity-100' as const
 const CARROUSEL_LENGTH: number = CARROUSEL_HIGHLIGHTED.length
 
 export function Carrousel() {
@@ -24,11 +26,8 @@ export function Carrousel() {
 		else setCarrouselPosition(0)
 	}
 	return (
-		<div className="flex flex-row justify-center items-center relative">
-			<Arrow
-				className="absolute z-10 left-4 top-1/2 -translate-y-1/2 opacity-50 hover:opacity-100"
-				onClick={handleCarrouselLeft}
-			/>
+		<div className="flex flex-row justify-center items-center relative  mx-4">
+			<Arrow className={`left-4 ${ARROW_SHARED_CLASSNAME}`} onClick={handleCarrouselLeft} />
 			{CARROUSEL_HIGHLIGHTED.map((carrInfo, idx) => {
 				return (
 					<a key={carrInfo.id} className="select-none relative h-80">
@@ -36,7 +35,7 @@ export function Carrousel() {
 							src={image}
 							alt={`Image of the shoes "${carrInfo.productName}"`}
 							title={carrInfo.productName}
-							className={`h-full w-full object-cover aspect-[20/7] rounded-md shadow-md select-none transition-all
+							className={`h-full w-full object-cover aspect-video md:aspect-[20/7] rounded-md shadow-md select-none transition-all
                             ${carrouselPosition === idx ? 'relative opacity-100' : 'absolute opacity-0'}`}
 						/>
 					</a>
@@ -55,10 +54,7 @@ export function Carrousel() {
 					)
 				})}
 			</ul>
-			<Arrow
-				className="!rotate-180 absolute z-10 right-4 top-1/2 -translate-y-1/2 opacity-50 hover:opacity-100"
-				onClick={handleCarrouselRight}
-			/>
+			<Arrow className={`!rotate-180 right-4 ${ARROW_SHARED_CLASSNAME}`} onClick={handleCarrouselRight} />
 		</div>
 	)
 }

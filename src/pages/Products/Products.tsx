@@ -7,11 +7,12 @@ import { Arrow } from '../../assets'
 
 //@ts-expect-error: This is an alias for the assets/images folder setup in Vite.config
 import imageAsExample from '@images/portraitShoe.webp'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { SearchParamsContext } from '../../context/searchParams.context'
 
 export default function Products({ idPage }: { idPage: number }) {
 	const { searchParams } = useContext(SearchParamsContext)
+	const [filters, setFilters] = useState(false)
 
 	const {
 		responseData: { returnResponse },
@@ -28,14 +29,24 @@ export default function Products({ idPage }: { idPage: number }) {
 		<section className="mt-10 flex flex-col justify-center items-center">
 			<Carrousel />
 
-			<Title className="mt-10 bg-mainPalette-darkBrown3 rounded-md px-4 border-2 border-mainPalette-softBrown1/50">
+			<Title className="mt-10 text-center mx-2 bg-mainPalette-darkBrown3 rounded-md px-4 border-2 border-mainPalette-softBrown1/50">
 				{searchParams.size > 0
 					? `Searching by ${searchParams.size} ${searchParams.size > 1 ? 'filters' : 'filter'}`
 					: 'No filters applied.'}
 			</Title>
 
-			<article className="flex flex-row gap-x-4 w-full mt-6 h-full">
-				<ProductsFilter totalPrice={returnResponse.map((el) => el.price)} productsInformation={productsInformation} />
+			<Button className="sm:hidden mt-4 text-lg w-24" onClick={() => setFilters((prevState) => !prevState)}>
+				Filters
+			</Button>
+
+			<article className={`flex sm:!flex-row ${filters && '!flex-col justify-center'} gap-x-4 w-full mt-6 items-start`}>
+				<div
+					className={`hidden sm:!flex items-start sm:ml-2 sm:!w-fit sm:justify-normal ${
+						filters && '!flex w-full justify-center mb-4'
+					} transition-all`}
+				>
+					<ProductsFilter totalPrice={returnResponse.map((el) => el.price)} productsInformation={productsInformation} />
+				</div>
 				<ul className="w-full h-full grid grid-cols-auto-fill-productCol place-items-center items-start gap-x-2 gap-y-4">
 					{returnResponse?.map((product) => {
 						return (
