@@ -10,13 +10,10 @@ import { Title } from './Title.component'
 import portraitShoe from '@images/portraitShoe.webp'
 import { Link } from 'react-router-dom'
 
-function getImage() {
-	return portraitShoe
-	//! improve this logic
-}
+const commonArrowStyles =
+	'mx-1 md:mx-2 lg:mx-5 absolute sm:relative z-20 scale-75 md:scale-100 opacity-50 sm:opacity-100'
 
 export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuery: apiRequest; titleName: string }) {
-	//filter - query
 	const {
 		responseData: { returnResponse },
 		cartActions: { addCart }
@@ -40,7 +37,7 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 				</Title>
 			</div>
 			<main className="flex flex-row items-center justify-between bg-mainPalette-darkBrown3 border-y-2 border-mainPalette-softBrown1">
-				<Arrow className="mx-5" onClick={() => scrollCarrousel('right')} />
+				<Arrow className={`${commonArrowStyles}`} onClick={() => scrollCarrousel('right')} />
 				<div
 					ref={carrouselRef}
 					className="grid grid-flow-col gap-x-4 w-full py-5 px-2 overflow-x-scroll no-scrollbar shadow-inner-xl border-x-2 border-mainPalette-softBrown1"
@@ -49,14 +46,14 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 						return (
 							<section
 								key={product.idProduct}
-								className="border-2 border-mainPalette-darkBrown1 rounded-md p-4 bg-mainPalette-darkBrown2/30 w-40 flex flex-col"
+								className="border-2 border-mainPalette-darkBrown1 rounded-md p-4 bg-mainPalette-darkBrown2/30 w-32 md:w-40 flex flex-col"
 							>
 								<Link
 									to={`/seeProduct/${product.title}`}
 									className="h-32 border-b-2 border-b-mainPalette-darkBrown2 mb-2"
 								>
 									<img
-										src={getImage()}
+										src={portraitShoe}
 										alt={product.title}
 										className="h-full w-full object-cover select-none transition-all hover:scale-110"
 									/>
@@ -81,7 +78,7 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 						)
 					})}
 				</div>
-				<Arrow className="!rotate-180 mx-5" onClick={() => scrollCarrousel('left')} />
+				<Arrow className={`!rotate-180 ${commonArrowStyles} right-0`} onClick={() => scrollCarrousel('left')} />
 			</main>
 		</aside>
 	)

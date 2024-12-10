@@ -37,7 +37,7 @@ export default {
 			},
 			boxShadow: {
 				['inner-xl']: '25px 0px 20px -20px rgba(0,0,0,0.5) inset, -25px 0px 20px -20px rgba(0,0,0,0.5) inset',
-				['top']: 'rgba(0, 0, 0, 0.5) 0px -6px 6px -6px'
+				['top']: 'rgba(42, 37, 32, 1) 0px -6px 6px -6px'
 			}
 		}
 	},

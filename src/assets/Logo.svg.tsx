@@ -2,13 +2,13 @@ import { APP_NAME } from '../utils'
 
 export function AppLogo({
 	SVGclassName = '',
-	titleclassName = ''
+	titleClassName = ''
 }: {
 	SVGclassName?: string
-	titleclassName?: string
+	titleClassName?: string
 }) {
 	return (
-		<h3 className={`text-2xl cursor-pointer font-bold flex gap-2 items-end ${titleclassName}`}>
+		<h3 className={`text-2xl cursor-pointer font-bold flex gap-2 items-end ${titleClassName}`}>
 			{APP_NAME}
 
 			<svg

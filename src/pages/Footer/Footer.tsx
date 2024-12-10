@@ -20,7 +20,7 @@ const MORE_INFORMATION: Array<singleContent> = [
 	}
 ] as const
 
-const CONTANCT_US: Array<singleContent> = [
+const CONTACT_US: Array<singleContent> = [
 	{
 		contentName: 'Phone Number: ',
 		providedInformation: '+123 456 789'
@@ -50,15 +50,20 @@ const SOCIALS: Array<singleContent> = [
 export default function Footer() {
 	return (
 		<footer className="bg-black/90 mt-10 py-10 border-t-2 border-t-slate-300/50">
-			<div className="flex flex-row justify-around items-start">
-				<AppLogo titleclassName="h-full vertical my-auto hover:scale-110 transition-all" />
-				<FooterMore sectionName="Learn More" contents={MORE_INFORMATION} />
-				<FooterMore sectionName="Contact Us" contents={CONTANCT_US} />
-				<FooterMore sectionName="Socials" contents={SOCIALS} />
+			<div className="flex flex-col md:flex-row w-full items-center">
+				<AppLogo
+					titleClassName="text-nowrap mb-5 md:mb-0 md:ml-5 hover:scale-110 transition-all text-2xl"
+					SVGclassName="w-full"
+				/>
+				<div className="flex flex-col flex-1 md:justify-evenly justify-center items-start gap-y-4 md:flex-row">
+					<FooterMore sectionName="Learn More" contents={MORE_INFORMATION} />
+					<FooterMore sectionName="Contact Us" contents={CONTACT_US} />
+					<FooterMore sectionName="Socials" contents={SOCIALS} />
+				</div>
 			</div>
 
 			<span
-				className="mt-10 relative flex justify-center
+				className="mt-10 relative flex justify-center text-center
             before:content-[''] before:w-9/12 before:h-full before:absolute before:-top-5 before:border-t-2 before:border-t-mainPalette-softWhite/50 "
 			>
 				© Lorem Ipsum 20XX | All Rights Reserved

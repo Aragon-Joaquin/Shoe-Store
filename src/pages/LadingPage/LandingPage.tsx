@@ -15,8 +15,8 @@ export default function LandingPage() {
 
 	return (
 		<>
-			<header className="relative cc_clip-path-polygon flex flex-col items-center justify-center bg-cover bg-center bg-ladingPageCover h-80 select-none">
-				<div className="mb-5 gap-y-3 p-4 flex flex-col items-center after:rounded-xl after:backdrop-blur-md after:bg-gray-700/30 after:w-full after:h-full after:-z-10 after:inset-0 after:absolute">
+			<header className="relative cc_clip-path-polygon flex flex-col items-center md:justify-center bg-cover bg-center bg-ladingPageCover h-80 select-none">
+				<div className="mt-10 md:mt-0 mb-5 gap-y-3 p-2 md:p-4 flex flex-col items-center after:rounded-xl after:backdrop-blur-md after:bg-gray-700/30 after:w-full after:h-full after:-z-10 after:inset-0 after:absolute">
 					<h2 className="font-bold text-3xl">{APP_NAME}</h2>
 					<span className="text-center">{APP_SLOGAN}</span>
 					<Route anchorURL="/products" typeOfStyling="button">
@@ -27,8 +27,8 @@ export default function LandingPage() {
 
 			<article>
 				<section className="flex flex-col justify-center items-center">
-					<Title>Lorem ipsum dolor sit.</Title>
-					<p className="bg-mainPalette-darkBrown1 max-w-[50%] text-center p-4 border-2 border-mainPalette-softBrown1 mb-2 rounded-md">
+					<Title className="text-center">Lorem ipsum dolor sit.</Title>
+					<p className="bg-mainPalette-darkBrown1 p-2 w-9/12 md:w-1/2 text-center md:p-4 border-2 border-mainPalette-softBrown1 mb-2 rounded-md">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, modi! Blanditiis pariatur corporis incidunt
 						officia eius placeat culpa voluptate dolore.
 					</p>
@@ -57,7 +57,7 @@ export default function LandingPage() {
 						)}
 					</div>
 
-					<span className="block mt-10 py-10 h-full w-full bg-[#2A2520]">
+					<span className="block mt-10 py-10 h-full w-full bg-[#2A2520] shadow-top">
 						<ProductServices />
 						<ProductCarrousel apiQuery={{}} titleName="More" />
 						<ProductCarrousel apiQuery={{}} titleName="Featured" />
