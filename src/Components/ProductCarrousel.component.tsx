@@ -32,7 +32,7 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 	return (
 		<aside className="my-10">
 			<div className="flex justify-center">
-				<Title className="bg-mainPalette-darkBrown3 w-min text-nowrap px-10 rounded-t-md border-2 border-mainPalette-softBrown1 border-b-transparent">
+				<Title className="bg-mainPalette-darkBrown3 mx-6 w-full sm:w-min text-center sm:text-nowrap text-lg sm:text-2xl px-10 rounded-t-md border-2 border-mainPalette-softBrown1 border-b-transparent">
 					{titleName}
 				</Title>
 			</div>

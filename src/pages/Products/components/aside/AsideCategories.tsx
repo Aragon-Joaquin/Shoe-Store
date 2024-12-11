@@ -18,7 +18,6 @@ export default function AsideCategories({
 	stateManager: searchParamsContext['paramsCategory']
 }) {
 	const { colors, hexColors } = infoColors
-	//i shouldn't use this state here ('cause states could desync). i learn my lesson but i wont refactor the entire code again
 	const { handleSelectedParams, selectedParams } = useContext(SearchParamsContext)
 
 	const handleMultipleFunc = (keyName: keyType, ...paramsArgs: Parameters<typeof stateManager>) => {
