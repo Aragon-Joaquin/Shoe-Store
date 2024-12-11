@@ -1,17 +1,17 @@
-> [!NOTE] 
+> [!NOTE]
 > **THIS IS NOT GOING TO BE IN MY PORTFOLIO.** <br>
 > I learnt a ton & i improve more on React. **But i think it's enough.**
 > I don't wanna extend the project since i stopped learning new things a while ago & the ts code i wrote it's getting more and more complex since i didn't have any idea of what i was doing.
 > And im horrible at **UX/UI Design** oh my god. But yeah, that's it. I wanna try React 19 too. thank you for reading this ❤.
 
+# 👞 ShoeStore - A SPA with React Router.
+
+My first **SPA** (IM NOT A UX/UI DESIGNER 😭), the idea of this was centralized on learning **TypeScript, Tailwind & React Router.** And yeah, this entire project needs a refactor now that i think of
+
 - **Expected time**: 4 months maximum (until 1/2/2025)
 - **Level required**: Easy
 - **Architecture**: Clean (i'll try)
 - **Type of application**: SPA
-
-# 👞 ShoeStore - A SPA with React Router.
-
-My first **SPA** (IM NOT A UX/UI DESIGNER 😭), the idea of this was centralized on learning **TypeScript, Tailwind & React Router.** And yeah, this entire project needs a refactor now that i think of
 
 ## ℹ Installation
 
