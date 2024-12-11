@@ -50,6 +50,7 @@ export default function ProductCarrousel({ apiQuery = {}, titleName }: { apiQuer
 							>
 								<Link
 									to={`/seeProduct/${product.title}`}
+									reloadDocument
 									className="h-32 border-b-2 border-b-mainPalette-darkBrown2 mb-2"
 								>
 									<img
